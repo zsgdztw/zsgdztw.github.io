@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<!--
+
+使用說明：輸入武將數據,計算戰力
+對應版本：4.2 
+
+-->
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>真三國戰力計算器</title>
+        <meta name="keywords" content="真三國大戰,啪啪三國,戰力計算器">
+        <meta name="description" content="戰力計算器,輸入武將數據,計算戰力">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="jquery.serialize-object.min.js"></script>
+        <link rel="stylesheet" href="main.css">
+        <script src="script.js"></script>
+    </head>
+
+    <body>
+
+        <span><h2>真三國戰力計算器</h2></span>
+        
+        <table id="cptable">
+            <tr>
+                <td>
+                    <label>戰力等級</label>
+                </td>
+                <td>
+                    <span id="maxcplevel"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>最大戰力</label>
+                </td>
+                <td>
+                    <span id="maxcp"></span>
+                </td>
+            </tr>
+        </table>
+        
+        <table id="gftable">
+            <tr>
+                <td>
+                    <span>工坊戰力</span>
+                    <button id="gfmax">MAX</button>
+                    <div>
+                        <input type="number" id="gfcp" min=0 max=10152>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        
+        <table id="techtable">
+            <tr>
+                <td><span>科技</span><button id="techmax">MAX</button></td>
+                <td>槍兵</td>
+                <td>弓兵</td>
+                <td>騎兵</td>
+            </tr>
+            <tr>
+                <td>武力</td>
+                <td><input type="number" id="qiangwu">%</td>
+                <td><input type="number" id="gongwu">%</td>
+                <td><input type="number" id="qiwu">%</td>
+            </tr>
+            <tr>
+                <td>智力</td>
+                <td><input type="number" id="qiangzhi">%</td>
+                <td><input type="number" id="gongzhi">%</td>
+                <td><input type="number" id="qizhi">%</td>
+            </tr>
+            <tr>
+                <td>兵力</td>
+                <td><input type="number" id="qiangbing">%</td>
+                <td><input type="number" id="gongbing">%</td>
+                <td><input type="number" id="qibing">%</td>
+            </tr>
+        </table>
+
+        <div id="tabs">
+            <ul>
+                <li><a href="#tabs1">武將</a></li>
+                <li><a href="#tabs2">武將</a></li>
+                <li><a href="#tabs3">武將</a></li>
+                <li><a href="#tabs4">武將</a></li>
+                <li><a href="#tabs5">武將</a></li>
+            </ul>
+            <div class="tabscontent" id="tabs1">
+            
+                <div class="wujiangall">
+
+                    <div class="wujiangself battleself">
+                        <br>
+                        <select class="wujianglist">
+
+                            <option selected disabled hidden>武將</option>
+                            <option>無</option>
+                            <option wu=610 zhi=464 bing=760 btype="槍兵" type="統帥將軍型" asso="諸葛亮,關羽,張飛,孫尚香">昭烈劉備</option>
+                            <option wu=671 zhi=511 bing=836 btype="槍兵" type="統帥將軍型" asso="諸葛亮,關羽,張飛,孫尚香">昭烈劉備★</option>
+                            <option wu=579 zhi=447 bing=808 btype="槍兵" type="統帥將軍型" asso="曹操,孫權,董卓,孫尚香,龐統">仁德劉備</option>
+                            <option wu=735 zhi=456 bing=708 btype="槍兵" type="統帥將軍型" asso="劉備,張飛,曹操,貂蟬">武聖關羽</option>
+                            <option wu=808 zhi=501 bing=778 btype="槍兵" type="統帥將軍型" asso="劉備,張飛,曹操,貂蟬">武聖關羽★</option>
+                            <option wu=758 zhi=384 bing=761 btype="槍兵" type="強襲勇將型" asso="劉備,關羽,張星彩,黃月英">暴怒張飛</option>
+                            <option wu=811 zhi=452 bing=640 btype="槍兵" type="強襲勇將型" asso="劉備,關羽,張星彩,馬超">桓侯張飛</option>
+                            <option wu=587 zhi=477 bing=844 btype="槍兵" type="統帥將軍型" asso="曹操,馬超,諸葛亮,劉備,孫尚香">龍膽趙雲</option>
+                            <option wu=645 zhi=524 bing=928 btype="槍兵" type="統帥將軍型" asso="曹操,馬超,諸葛亮,劉備,孫尚香">龍膽趙雲★</option>
+                            <option wu=440 zhi=800 bing=656 btype="弓兵" type="天命策士型" asso="司馬懿,周瑜,姜維,黃月英,劉備">臥龍諸葛亮</option>
+                            <option wu=484 zhi=880 bing=722 btype="弓兵" type="天命策士型" asso="司馬懿,周瑜,姜維,黃月英,劉備">臥龍諸葛亮★</option>
+                            <option wu=454 zhi=724 bing=718 btype="弓兵" type="天命策士型" asso="司馬懿,周瑜,姜維,黃月英,趙雲">七星諸葛亮</option>
+                            <option wu=715 zhi=443 bing=688 btype="騎兵" type="強襲勇將型" asso="趙雲,張飛,諸葛亮,馬雲祿,劉備">錦獅馬超</option>
+                            <option wu=790 zhi=388 bing=610 btype="弓兵" type="強襲勇將型" asso="龐統,馬超,太史慈,劉備">弓神黃忠</option>
+                            <option wu=852 zhi=437 bing=684 btype="弓兵" type="強襲勇將型" asso="龐統,馬超,太史慈,劉備">弓神黃忠★</option>
+                            <option wu=694 zhi=393 bing=701 btype="騎兵" type="強襲勇將型" asso="龐統,馬超,劉備,黃舞蝶">討虜黃忠</option>
+                            <option wu=566 zhi=583 bing=697 btype="槍兵" type="鬼才智將型" asso="諸葛亮,黃月英,趙雲,劉禪">麒麟姜維</option>
+                            <option wu=623 zhi=641 bing=767 btype="槍兵" type="鬼才智將型" asso="諸葛亮,黃月英,趙雲,劉禪">麒麟姜維★</option>
+                            <option wu=624 zhi=611 bing=611 btype="騎兵" type="統帥將軍型" asso="諸葛亮,黃月英,趙雲,劉禪">斗膽姜維</option>
+                            <option wu=702 zhi=451 bing=648 btype="弓兵" type="強襲勇將型" asso="劉備,孫策,吳國太,黃月英">弓腰姬孫尚香</option>
+                            <option wu=772 zhi=496 bing=713 btype="弓兵" type="強襲勇將型" asso="劉備,孫策,吳國太,黃月英">弓腰姬孫尚香★</option>
+                            <option wu=401 zhi=717 bing=682 btype="弓兵" type="天命策士型" asso="諸葛亮,姜維,關羽">阿醜黃月英</option>
+                            <option wu=559 zhi=401 bing=840 btype="槍兵" type="統帥將軍型" asso="諸葛亮,姜維,關羽">傑女黃月英</option>
+                            <option wu=580 zhi=442 bing=913 btype="槍兵" type="統帥將軍型" asso="諸葛亮,姜維,關羽,孫尚香">傑女黃月英★</option>
+                            <option wu=471 zhi=711 bing=606 btype="弓兵" type="天命策士型" asso="諸葛亮,黃忠,黃月英">鳳雛龐統</option>
+                            <option wu=557 zhi=637 bing=592 btype="騎兵" type="鬼才智將型" asso="諸葛亮,黃忠,劉備,黃月英">智極龐統</option>
+                            <option wu=803 zhi=449 bing=610 btype="騎兵" type="強襲勇將型" asso="關羽,劉備,姜維,黃月英">先鋒廖化</option>
+                            <option wu=606 zhi=624 bing=632 btype="弓兵" type="鬼才智將型" asso="關羽,劉備,姜維,黃月英">忠烈廖化</option>
+                            <option wu=668 zhi=401 bing=695 btype="騎兵" type="強襲勇將型" asso="馬岱,司馬懿,關羽,劉備,孫尚香">驍勇魏延</option>
+                            <option wu=703 zhi=373 bing=688 btype="槍兵" type="強襲勇將型" asso="馬岱,諸葛亮,黃忠,劉備,孫尚香">狂骨魏延</option>
+                            <option wu=643 zhi=483 bing=853 btype="騎兵" type="統帥將軍型" asso="典韋,郭嘉,關羽,小喬,賈詡">武帝曹操</option>
+                            <option wu=708 zhi=532 bing=939 btype="騎兵" type="統帥將軍型" asso="典韋,郭嘉,關羽,小喬,賈詡">武帝曹操★</option>
+                            <option wu=587 zhi=501 bing=891 btype="槍兵" type="統帥將軍型" asso="劉備,孫權,董卓,小喬,賈詡,呂布">奸雄曹操</option>
+                            <option wu=703 zhi=447 bing=723 btype="騎兵" type="強襲勇將型" asso="夏侯淵,曹操,荀彧,關羽">獨目夏侯惇</option>
+                            <option wu=773 zhi=491 bing=795 btype="騎兵" type="強襲勇將型" asso="夏侯淵,曹操,荀彧,關羽">獨目夏侯惇★</option>
+                            <option wu=810 zhi=433 bing=630 btype="騎兵" type="強襲勇將型" asso="張遼,曹操,荀彧,關羽">蒼狼夏侯惇</option>
+                            <option wu=799 zhi=441 bing=634 btype="騎兵" type="強襲勇將型" asso="夏侯惇,郭嘉,呂布,孫權,貂蟬">振威張遼</option>
+                            <option wu=878 zhi=485 bing=697 btype="騎兵" type="強襲勇將型" asso="夏侯惇,郭嘉,呂布,孫權,貂蟬">振威張遼★</option>
+                            <option wu=821 zhi=442 bing=636 btype="騎兵" type="強襲勇將型" asso="劉備,呂布,曹操,貂蟬">一騎關羽</option>
+                            <option wu=594 zhi=647 bing=645 btype="騎兵" type="鬼才智將型" asso="曹操,諸葛亮,張春華,姜維">狼顧司馬懿</option>
+                            <option wu=653 zhi=712 bing=710 btype="騎兵" type="鬼才智將型" asso="曹操,諸葛亮,張春華,姜維">狼顧司馬懿★</option>
+                            <option wu=505 zhi=736 bing=645 btype="弓兵" type="天命策士型" asso="曹操,諸葛亮,周瑜,關羽,張春華">宣王司馬懿</option>
+                            <option wu=377 zhi=698 bing=697 btype="弓兵" type="天命策士型" asso="曹丕,曹植,蔡文姬,曹操,貂蟬">洛神甄姬</option>
+                            <option wu=405 zhi=711 bing=692 btype="弓兵" type="天命策士型" asso="程昱,張遼,曹操,司馬懿">毒士賈詡</option>
+                            <option wu=446 zhi=782 bing=761 btype="弓兵" type="天命策士型" asso="程昱,張遼,曹操,司馬懿">毒士賈詡★</option>
+                            <option wu=563 zhi=605 bing=640 btype="騎兵" type="鬼才智將型" asso="程昱,張遼,曹操,司馬懿">亂武賈詡</option>
+                            <option wu=619 zhi=666 bing=704 btype="騎兵" type="鬼才智將型" asso="程昱,張遼,曹操,司馬懿">亂武賈詡★</option>
+                            <option wu=789 zhi=385 bing=628 btype="騎兵" type="強襲勇將型" asso="張遼,荀彧,曹操">疾風曹仁</option>
+                            <option wu=856 zhi=445 bing=690 btype="騎兵" type="強襲勇將型" asso="張遼,荀彧,曹操">疾風曹仁★</option>
+                            <option wu=686 zhi=388 bing=728 btype="槍兵" type="統帥將軍型" asso="張遼,荀彧,曹操,關羽">征南曹仁</option>
+                            <option wu=501 zhi=693 bing=629 btype="弓兵" type="天命策士型" asso="司馬懿,賈詡,曹仁,曹操,卞夫人">驅虎荀彧</option>
+                            <option wu=418 zhi=753 bing=652 btype="弓兵" type="天命策士型" asso="司馬懿,賈詡,曹仁,曹操,卞夫人">令香荀彧</option>
+                            <option wu=609 zhi=549 bing=678 btype="騎兵" type="鬼才智將型" asso="曹操,典韋,賈詡,甄姬,郭皇后,曹植">文帝曹丕</option>
+                            <option wu=566 zhi=689 bing=581 btype="槍兵" type="鬼才智將型" asso="曹操,典韋,賈詡,甄姬,郭皇后,曹植">滅奏曹丕</option>
+                            <option wu=707 zhi=420 bing=712 btype="槍兵" type="強襲勇將型" asso="曹操,許褚,夏侯惇,鄒氏">惡來典韋</option>
+                            <option wu=751 zhi=412 bing=676 btype="騎兵" type="強襲勇將型" asso="曹操,許褚,夏侯惇,荀彧,鄒氏">英靈典韋</option>
+                            <option wu=600 zhi=414 bing=854 btype="槍兵" type="統帥將軍型" asso="孫策,孫權,程普,吳夫人,曹操">武烈孫堅</option>
+                            <option wu=660 zhi=456 bing=940 btype="槍兵" type="統帥將軍型" asso="孫策,孫權,程普,吳夫人,曹操">武烈孫堅★</option>
+                            <option wu=814 zhi=415 bing=639 btype="弓兵" type="強襲勇將型" asso="孫策,孫權,吳夫人,董卓">猛虎孫堅</option>
+                            <option wu=715 zhi=422 bing=723 btype="槍兵" type="強襲勇將型" asso="孫堅,孫權,周瑜,大喬">霸王孫策</option>
+                            <option wu=786 zhi=464 bing=795 btype="槍兵" type="強襲勇將型" asso="孫堅,孫權,周瑜,大喬">霸王孫策★</option>
+                            <option wu=818 zhi=413 bing=629 btype="弓兵" type="強襲勇將型" asso="孫堅,太史慈,周瑜,大喬">馳騁孫策</option>
+                            <option wu=588 zhi=642 bing=652 btype="弓兵" type="鬼才智將型" asso="孫堅,孫策,周瑜,吳夫人">吳王孫權</option>
+                            <option wu=650 zhi=720 bing=702 btype="弓兵" type="鬼才智將型" asso="孫堅,孫策,周瑜,吳夫人">吳王孫權★</option>
+                            <option wu=549 zhi=600 bing=733 btype="弓兵" type="統帥將軍型" asso="曹操,劉備,董卓,孫尚香,曹仁">若虎孫權</option>
+                            <option wu=455 zhi=786 bing=649 btype="弓兵" type="天命策士型" asso="孫策,諸葛亮,小喬,孫權">業炎周瑜</option>
+                            <option wu=501 zhi=865 bing=712 btype="弓兵" type="天命策士型" asso="孫策,諸葛亮,小喬,孫權">業炎周瑜★</option>
+                            <option wu=475 zhi=707 bing=708 btype="弓兵" type="天命策士型" asso="諸葛亮,司馬懿,孫策,小喬">顧曲周瑜</option>
+                            <option wu=812 zhi=427 bing=630 btype="弓兵" type="強襲勇將型" asso="孫策,周瑜,黃忠,孫尚香,張遼">矢志太史慈</option>
+                            <option wu=893 zhi=469 bing=693 btype="弓兵" type="強襲勇將型" asso="孫策,周瑜,黃忠,孫尚香,張遼">矢志太史慈★</option>
+                            <option wu=707 zhi=439 bing=723 btype="槍兵" type="強襲勇將型" asso="孫策,曹操,孫權,吳夫人">感古太史慈</option>
+                            <option wu=414 zhi=703 bing=739 btype="弓兵" type="天命策士型" asso="劉備,甘寧,孫權,孫尚香">焚天陸遜</option>
+                            <option wu=576 zhi=640 bing=640 btype="弓兵" type="鬼才智將型" asso="劉備,甘寧,孫權,周瑜">儒將陸遜</option>
+                            <option wu=634 zhi=704 bing=704 btype="弓兵" type="鬼才智將型" asso="劉備,甘寧,孫權,周瑜">儒將陸遜★</option>
+                            <option wu=757 zhi=433 bing=611 btype="弓兵" type="強襲勇將型" asso="劉備,孫策,吳國太,周瑜,大喬">郡主孫尚香</option>
+                            <option wu=774 zhi=643 bing=481 btype="弓兵" type="強襲勇將型" asso="甘寧,孫權,關羽,孫尚香,陸遜">克己呂蒙</option>
+                            <option wu=792 zhi=460 bing=646 btype="弓兵" type="強襲勇將型" asso="甘寧,孫權,關羽,孫尚香">虎威呂蒙</option>
+                            <option wu=574 zhi=414 bing=814 btype="騎兵" type="統帥將軍型" asso="陸遜,太史慈,甘寧,孫權">國士凌統</option>
+                            <option wu=679 zhi=407 bing=716 btype="槍兵" type="強襲勇將型" asso="周瑜,張遼,甘寧,孫權,吳夫人">浴血凌統</option>
+                            <option wu=747 zhi=448 bing=787 btype="槍兵" type="強襲勇將型" asso="周瑜,張遼,甘寧,孫權,吳夫人">浴血凌統★</option>
+                            <option wu=815 zhi=421 bing=616 btype="弓兵" type="強襲勇將型" asso="太史慈,孫權,陸遜,吳夫人,凌統">遊俠甘寧</option>
+                            <option wu=701 zhi=446 bing=728 btype="騎兵" type="強襲勇將型" asso="太史慈,曹操,張遼,孫尚香,凌統">鬥將甘寧</option>
+                            <option wu=486 zhi=640 bing=660 btype="弓兵" type="鬼才智將型" asso="諸葛亮,周瑜,孫權,孫尚香,曹操">締盟魯肅</option>
+                            <option wu=456 zhi=550 bing=780 btype="槍兵" type="統帥將軍型" asso="關羽,曹操,孫尚香,陸遜">忠魂魯肅</option>
+                            <option wu=830 zhi=361 bing=619 btype="騎兵" type="強襲勇將型" asso="張遼,董卓,貂蟬,呂玲綺">鬼神呂布</option>
+                            <option wu=913 zhi=397 bing=680 btype="騎兵" type="強襲勇將型" asso="張遼,董卓,貂蟬,呂玲綺">鬼神呂布★</option>
+                            <option wu=724 zhi=373 bing=713 btype="騎兵" type="強襲勇將型" asso="曹操,劉備,董卓,貂蟬">修羅呂布</option>
+                            <option wu=797 zhi=390 bing=637 btype="弓兵" type="強襲勇將型" asso="呂布,貂蟬,呂玲綺,董白">猩紅呂姬</option>
+                            <option wu=868 zhi=438 bing=701 btype="弓兵" type="強襲勇將型" asso="呂布,貂蟬,呂玲綺,董白">猩紅呂姬★</option>
+                            <option wu=694 zhi=393 bing=739 btype="騎兵" type="強襲勇將型" asso="呂布,貂蟬,呂玲綺,董白">雙子呂姬</option>
+                            <option wu=763 zhi=432 bing=813 btype="騎兵" type="強襲勇將型" asso="呂布,貂蟬,呂玲綺,董白">雙子呂姬★</option>
+                            <option wu=781 zhi=405 bing=622 btype="騎兵" type="強襲勇將型" asso="呂布,貂蟬,呂姬,董白">戰姬呂玲綺</option>
+                            <option wu=677 zhi=414 bing=718 btype="騎兵" type="強襲勇將型" asso="呂布,貂蟬,呂姬,董白">雙子呂玲綺</option>
+                            <option wu=745 zhi=455 bing=790 btype="騎兵" type="強襲勇將型" asso="呂布,貂蟬,呂姬,董白">雙子呂玲綺★</option>
+                            <option wu=690 zhi=456 bing=728 btype="騎兵" type="強襲勇將型" asso="曹操,賈詡,呂布,董卓">召虎張遼</option>
+                            <option wu=761 zhi=496 bing=779 btype="騎兵" type="強襲勇將型" asso="曹操,賈詡,呂布,董卓">召虎張遼★</option>
+                            <option wu=619 zhi=409 bing=796 btype="騎兵" type="統帥將軍型" asso="呂布,貂蟬,曹操,何太后">魔君董卓</option>
+                            <option wu=681 zhi=450 bing=876 btype="騎兵" type="統帥將軍型" asso="呂布,貂蟬,曹操,何太后">魔君董卓★</option>
+                            <option wu=590 zhi=374 bing=860 btype="槍兵" type="統帥將軍型" asso="曹操,劉備,孫權,貂蟬">濁世董卓</option>
+                            <option wu=394 zhi=770 bing=570 btype="弓兵" type="天命策士型" asso="呂布,董卓,甄姬,關羽">絕舞貂蟬</option>
+                            <option wu=433 zhi=847 bing=627 btype="弓兵" type="天命策士型" asso="呂布,董卓,甄姬,關羽">絕舞貂蟬★</option>
+                            <option wu=405 zhi=673 bing=656 btype="弓兵" type="鬼才智將型" asso="呂布,董卓,甄姬,關羽">傾世貂蟬</option>
+                            <option wu=468 zhi=726 bing=744 btype="弓兵" type="鬼才智將型" asso="呂布,董卓,甄姬,關羽">傾世貂蟬★</option>
+                            <option wu=540 zhi=627 bing=605 btype="弓兵" type="鬼才智將型" asso="曹丕,司馬懿,蔡文姬,曹操">靈蛇甄姬</option>
+                            <option wu=643 zhi=460 bing=805 btype="騎兵" type="強襲勇將型" asso="曹操,馬超,諸葛亮,黃舞蝶">神威趙雲</option>
+                            <option wu=813 zhi=428 bing=605 btype="騎兵" type="強襲勇將型" asso="曹操,曹仁,許褚,劉備,馬雲祿">鐵騎馬超</option>
+                            <option wu=894 zhi=470 bing=665 btype="騎兵" type="強襲勇將型" asso="曹操,曹仁,許褚,劉備,馬雲祿">鐵騎馬超★</option>
+                            <option wu=393 zhi=665 bing=713 btype="弓兵" type="天命策士型" asso="張梁,張寶,於吉,曹操,孫堅,諸葛果">天公張角</option>
+                            <option wu=388 zhi=767 bing=616 btype="弓兵" type="天命策士型" asso="於吉,曹操,孫堅,董卓">符咒張角</option>
+                            <option wu=724 zhi=374 bing=712 btype="槍兵" type="強襲勇將型" asso="文醜,關羽,田豐,袁紹">鴉殺顏良</option>
+                            <option wu=728 zhi=387 bing=699 btype="槍兵" type="強襲勇將型" asso="顏良,關羽,田豐,袁紹">獵狐文醜</option>
+                            <option wu=631 zhi=385 bing=795 btype="騎兵" type="統帥將軍型" asso="劉備,田豐,顏良,呂布,甄姬">思召袁紹</option>
+                            <option wu=543 zhi=408 bing=860 btype="槍兵" type="統帥將軍型" asso="劉備,顏良,董卓,袁術,甄姬">貴冑袁紹</option>
+
+                        </select>
+
+                        <table class="wujiangout">
+                            <tr>
+                                <td>
+                                    <span class="wujiang"></span>
+                                    <div>
+                                        <span class="wujiangbtype"></span><span class="wujiangtype"></span>
+                                    </div>
+                                    <div>
+                                        戰力<span class="cp"></span>
+                                    </div>
+
+                                </td>
+                                <td>基礎</td> 
+                                <td>科技</td>
+                                <td>隨從</td>
+                                <td>四聖石</td>
+                                <td>戰器</td>
+                                <td>兵種</td>
+                                <td>將魂</td>
+                            </tr>
+                            <tr>
+                                <td>武力<span class="sumwu"></span></td>
+                                <td><span class="wu basewu"></span></td>
+                                <td><span class="wu techwu"></span></td>
+                                <td class="fol"><span class="wu folwu"></span></td>
+                                <td><span class="wu stonewu"></span></td>
+                                <td class="arm"><span class="wu armwu"></span></td>
+                                <td class="btype"><span class="wu btypewu"></span></td>
+                                <td><span class="wu soulwu"></span></td>
+                            </tr>
+                            <tr>
+                                <td>智力<span class="sumzhi"></span></td>
+                                <td><span class="zhi basezhi"></span></td>
+                                <td><span class="zhi techzhi"></span></td>
+                                <td class="fol"><span class="zhi folzhi"></span></td>
+                                <td><span class="zhi stonezhi"></span></td>
+                                <td class="arm"><span class="zhi armzhi"></span></td>
+                                <td class="btype"><span class="zhi btypezhi"></span></td>
+                                <td><span class="zhi soulzhi"></span></td>
+                            </tr>
+                            <tr>
+                                <td>兵力<span class="sumbing"></span></td>
+                                <td><span class="bing basebing"></span></td>
+                                <td><span class="bing techbing"></span></td>
+                                <td class="fol"><span class="bing folbing"></span></td>
+                                <td><span class="bing stonebing"></span></td>
+                                <td class="arm"><span class="bing armbing"></span></td>
+                                <td class="btype"><span class="bing btypebing"></span></td>
+                                <td><span class="bing soulbing"></span></td>
+                            </tr>
+                        </table>
+
+                        <div class="popup folpopup">
+                            <div class="wufolpopup" hidden>
+                                <span class="wufolname"></span>
+                                <div>
+                                    武力
+                                    <span class="wufoladd"></span>
+                                    <label hidden>+</label>
+                                    <span class="wufolassoadd"></span>
+                                </div>
+                            </div>
+                            <div class="zhifolpopup" hidden>
+                                <span class="zhifolname"></span>
+                                <div>
+                                    智力
+                                    <span class="zhifoladd"></span>
+                                    <label hidden>+</label>
+                                    <span class="zhifolassoadd"></span>
+                                </div>
+                            </div>
+                            <div class="bingfolpopup" hidden>
+                                <span class="bingfolname"></span>
+                                <div>
+                                    兵力
+                                    <span class="bingfoladd"></span>
+                                    <label hidden>+</label>
+                                    <span class="bingfolassoadd"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="popup armpopup">
+                            <div>
+                                <span class="armclasspopup"></span>
+                                <span class="armnamepopup"></span>
+                                <span class="armlevelpopup"></span>
+                            </div>
+                            <table>
+                                <tr>
+                                    <td></td>
+                                    <td>基礎</td>
+                                    <td>強化</td>
+                                    <td>淬煉</td>
+                                    <td>專屬</td>
+                                </tr>
+                                <tr>
+                                    <td>武力</td>
+                                    <td class="armbasewupopup"></td>
+                                    <td class="armlevelwupopup"></td>
+                                    <td class="armslwupopup"></td>
+                                    <td class="armclasswupopup"></td>
+                                </tr>
+                                <tr>
+                                    <td>智力</td>
+                                    <td class="armbasezhipopup"></td>
+                                    <td class="armlevelzhipopup"></td>
+                                    <td class="armslzhipopup"></td>
+                                    <td class="armclasszhipopup"></td>
+                                </tr>
+                                <tr>
+                                    <td>兵力</td>
+                                    <td class="armbasebingpopup"></td>
+                                    <td class="armlevelbingpopup"></td>
+                                    <td class="armslbingpopup"></td>
+                                    <td class="armclassbingpopup"></td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                        <div class="popup btypepopup">
+                            <div>
+                                武力
+                                <span class="bookwupopup"></span>
+                                <label hidden>+</label>
+                                <span class="btypelevel3wupopup"></span>
+                            </div>
+                            <div>
+                                智力
+                                <span class="bookzhipopup"></span>
+                                <label hidden>+</label>
+                                <span class="btypelevel3zhipopup"></span>
+                            </div>
+                            <div>
+                                兵力
+                                <span class="bookbingpopup"></span>
+                                <label hidden>+</label>
+                                <span class="btypelevel3bingpopup"></span>
+                            </div>
+                        </div>
+
+                        <table class="wujiangin">
+                            <tr>
+                                <td>
+                                    <div>
+                                        <span>升級</span>
+                                        <button class="basemax">MAX</button>
+                                    </div>
+                                    <div>
+                                        Lv
+                                        <input class="baselevel" type="number" min=1 max=120 value=1>
+                                    </div>
+                                    <div>
+                                        <span>將魂</span>
+                                        <button class="soulmax">MAX</button>
+                                    </div>
+                                    <div>
+                                        Lv
+                                        <input class="soullevel" type="number" min=0 max=30 value=0>
+                                    </div>
+                                </td>
+
+                                <td>
+                                <span>四聖石</span>
+                                <button class="stonemax">MAX</button>
+                                <div>
+                                    <span>青龍</span>
+                                    <input class="stonelevel dragonlevel" type="number" min=1 max=9 value=1>級
+                                    <input class="stonestar dragonstar" type="number" min=0 max=3 value=0>星
+                                </div>
+                                <div>
+                                    <span>白虎</span>
+                                    <input class="stonelevel tigerlevel" type="number" min=1 max=9 value=1>級
+                                    <input class="stonestar tigerstar" type="number" min=0 max=3 value=0>星
+                                </div>
+                                <div>
+                                    <span>朱雀</span>
+                                    <input class="stonelevel birdlevel" type="number" min=1 max=9 value=1>級
+                                    <input class="stonestar birdstar" type="number" min=0 max=3 value=0>星
+                                </div>
+                                <div>
+                                    <span>玄武</span>
+                                    <input class="stonelevel tortoiselevel" type="number" min=1 max=9 value=1>級
+                                    <input class="stonestar tortoisestar" type="number" min=0 max=3 value=0>星
+                                </div>
+                                </td>
+
+                                <td>
+                                <span>兵種</span>
+                                <button class="btypemax">MAX</button>
+                                <div>
+                                    <span>
+                                    <select class="book">
+                                        <option selected disabled hidden>左上</option>
+                                        <option>無</option>
+                                        <option class="book1a"></option>
+                                        <option class="book1b"></option>
+                                    </select>
+                                    <input class="booklevel" type="number" min=1 max=5>級
+                                    </span>
+                                    <span>
+                                    <select class="book">
+                                        <option selected disabled hidden>右上</option>
+                                        <option>無</option>
+                                        <option class="book5a"></option>
+                                        <option class="book5b"></option>
+                                    </select>
+                                    <input class="booklevel" type="number" min=1 max=5>級
+                                    </span>
+                                </div>
+                                <div>
+                                    <span>
+                                    <select class="book">
+                                        <option selected disabled hidden>左下</option>
+                                        <option>無</option>
+                                        <option class="book2a"></option>
+                                        <option class="book2b"></option>
+                                    </select>
+                                    <input class="booklevel" type="number" min=1 max=5>級
+                                    </span>
+                                    <span>
+                                    <select class="book">
+                                        <option selected disabled hidden>右下</option>
+                                        <option>無</option>
+                                        <option class="book4a"></option>
+                                        <option class="book4b"></option>
+                                    </select>
+                                    <input class="booklevel" type="number" min=1 max=5>級
+                                    </span>
+                                </div>
+                                <div>
+                                    <select class="book">
+                                        <option selected disabled hidden>下</option>
+                                        <option>無</option>
+                                        <option class="book3a"></option>
+                                        <option class="book3b"></option>
+                                    </select>
+                                    <input class="booklevel" type="number" min=1 max=5>級
+                                </div>
+                                <div>
+                                    <select class="btypelevel3">
+                                        <option selected disabled hidden>三階兵種</option>
+                                        <option>無</option>
+                                        <option class="btypelevel3a"></option>
+                                        <option class="btypelevel3b"></option>
+                                    </select>
+                                </div>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+                    <!--戰器input-->
+                    <table class="armtable">
+                        <tr>
+                            <td colspan="3">
+                            <span>戰器</span>
+                            <button class="armmax">MAX</button>
+                            </td>
+                        </tr>
+                        <tr>
+                        <td colspan="3">
+                            <div>
+                                <select class="armclass">
+                                <option selected disabled hidden>重鑄</option>
+                                    <option>無</option>
+                                    <option>霸</option>
+                                    <option>極</option>
+                                    <option>絕</option>
+                                </select>
+                                <select class="arm">
+                                    <option selected disabled hidden>專屬</option>
+                                    <option>無</option>
+                                    <option class="arm1"></option>
+                                </select>
+                                <span>
+                                    Lv
+                                    <input class="armlevel" type="number" min=1 max=15>
+                                </span>
+                            </div>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            <div>
+                            <span>武力</span>
+                            <input class="armbase armbasewu" type="number" min=80 max=160>
+                            </div>
+                            <div>
+                            <span>智力</span>
+                            <input class="armbase armbasezhi" type="number" min=80 max=160>
+                            </div>
+                            <div>
+                            <span>兵力</span>
+                            <input class="armbase armbasebing" type="number" min=80 max=160>
+                            </div>
+                            </td>
+                            <td>
+                            <div>
+                            <select class="armsltype">
+                                <option selected disabled hidden>淬煉</option>
+                                <option>無</option>
+                                <option>武力增加</option>
+                                <option>智力增加</option>
+                                <option>兵力增加</option>
+                                <option>武力提升</option>
+                                <option>智力提升</option>
+                                <option>兵力提升</option>
+                            </select>
+                            <input class="armsl" type="number"><label hidden>%</label>
+                            </div>
+                            <div>
+                            <select class="armsltype">
+                                <option selected disabled hidden>淬煉</option>
+                                <option>無</option>
+                                <option>武力增加</option>
+                                <option>智力增加</option>
+                                <option>兵力增加</option>
+                                <option>武力提升</option>
+                                <option>智力提升</option>
+                                <option>兵力提升</option>
+                            </select>
+                            <input class="armsl" type="number"><label hidden>%</label>
+                            </div>
+                            </td>
+                            <td>
+                            <div>
+                            <span>小被動</span>
+                            Lv
+                            <input class="armbd armbd1" type="number" min=1 max=15>
+                            </div>
+                            <div>
+                            <span>小被動</span>
+                            Lv
+                            <input class="armbd armbd1" type="number" min=1 max=15>
+                            </div>
+                            <div>
+                            <span>大被動</span>
+                            Lv
+                            <input class="armbd armbd2" type="number" min=1 max=8>
+                            </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="folself wufol">
+                    </div>
+
+                    <div class="folself zhifol">
+                    </div>
+
+                    <div class="folself bingfol">
+                    </div>
+
+                </div>
+                
+            </div>
+            <div class="tabscontent" id="tabs2"></div>
+            <div class="tabscontent" id="tabs3"></div>
+            <div class="tabscontent" id="tabs4"></div>
+            <div class="tabscontent" id="tabs5"></div>
+        </div>
+        
+        <div id="footerbutton">
+            <button id="resetbutton">重置</button>
+            <button id="calbutton">計算</button>
+        </div>
+        
+        <div>
+            <button id="reportbutton">回報問題</button>
+        </div>
+        
+        <div id="errordialog" title="輸入錯誤">
+        </div>
+        
+        <div id="reportdialog" title="回報問題">
+            <form id="reportform">
+                <textarea rows="4" cols="30" name="form_field"></textarea>
+            </form>
+        </div>
+        
+        <div id="reportsuccess" title="感謝支持">
+            我們已收到主公您的回報！
+        </div>
+
+    </body>
+</html>

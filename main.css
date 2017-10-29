@@ -1,0 +1,119 @@
+
+.wujiangout {
+    width: 100%;
+}
+
+.wujiangin {
+    width: 60%;
+    float: left;
+}
+
+.armtable {
+    width: 40%;
+}
+
+#techtable {
+    width: 50%;
+}
+
+#techtable td {
+    width: 25%;
+}
+
+#gftable {
+    width: 15%;
+}
+
+#cptable {
+    width: 20%;
+}
+
+#cptable td {
+    width: 50%;
+}
+
+.wujiangout tr:first-child {
+    width: 30%;
+}
+
+.wujiangout td {
+    width: 10%;
+}
+
+#cptable td, #gftable td, #techtable td, .wujiangout td, .wujiangin td, .armtable{
+    border: 1px solid;
+}
+
+td {
+    text-align: center;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.wujianglist {
+    height: 25px;
+    border: 1px solid black;
+}
+
+.wujiangtype, .wujiangbtype {
+    font-size: 12px;
+}
+
+span {
+    display: inline-block;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+input {
+    width: 50px;
+}
+
+#footerbutton {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+#calbutton, #resetbutton {
+    background-color: green;
+    color: white;
+}
+
+#reportbutton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: silver;
+    color: black;
+}
+
+#calbutton, #resetbutton, #reportbutton {
+    border: none;
+    padding: 10px 25px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.popup {
+    display: none;
+    position: absolute;
+    width: 200px;
+    padding: 10px;
+    background: #eeeeee;
+    color: #000000;
+    border: 1px solid #1a1a1a;
+    font-size: 90%;
+}
+
+body {
+    font-family: Verdana,Arial,sans-serif;
+    font-size: 15px;
+}
+
+#errordialog, #reportdialog, #reportsuccess {
+    display: none;
+}

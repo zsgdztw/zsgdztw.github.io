@@ -821,19 +821,19 @@ $(function(){
     
     //maxstone
     $(".stonemax").click(function(){
-        $(this).siblings().find(".stonelevel").val(9);
-        $(this).siblings().find(".stonestar").val(3);
+        $(this).closest(".wujiangin").find(".stonelevel").val(9);
+        $(this).closest(".wujiangin").find(".stonestar").val(3);
     })
     
     //maxbtype
     $(".btypemax").click(function(){
-        $(this).siblings().find(".booklevel").val(5);
-        $(this).siblings().find(".book1a").prop('selected',true);
-        $(this).siblings().find(".book2a").prop('selected',true);
-        $(this).siblings().find(".book3a").prop('selected',true);
-        $(this).siblings().find(".book4a").prop('selected',true);
-        $(this).siblings().find(".book5a").prop('selected',true);
-        $(this).siblings().find(".btypelevel3a").prop('selected',true);
+        $(this).closest(".wujiangin").find(".booklevel").val(5);
+        $(this).closest(".wujiangin").find(".book1a").prop('selected',true);
+        $(this).closest(".wujiangin").find(".book2a").prop('selected',true);
+        $(this).closest(".wujiangin").find(".book3a").prop('selected',true);
+        $(this).closest(".wujiangin").find(".book4a").prop('selected',true);
+        $(this).closest(".wujiangin").find(".book5a").prop('selected',true);
+        $(this).closest(".wujiangin").find(".btypelevel3a").prop('selected',true);
     })
     
     //maxarm
@@ -950,9 +950,10 @@ $(function(){
         $(this).closest(".wujiangout").siblings(".btypepopup").css('top',event.pageY-cursor).css('left',event.pageX);
     })
     
-    //report form
+    //report dialog
     $("#reportbutton").click(function(){
         $("#reportdialog").show().dialog({
+            width: 400,
             buttons: {
                 "提交": function(){
                     var jqxhr = $.ajax({
@@ -973,6 +974,12 @@ $(function(){
     $("#resetbutton").click(function(){
         location.reload();
     })
-
-        
+    
+    //help dialog
+    $("#helpbutton").click(function(){
+        $("#helpdialog").show().dialog({
+            width: 400
+        });
+    })
+    
 })

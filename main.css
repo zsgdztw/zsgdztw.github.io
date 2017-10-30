@@ -4,12 +4,12 @@
 }
 
 .wujiangin {
-    width: 60%;
+    width: 62%;
     float: left;
 }
 
 .armtable {
-    width: 40%;
+    width: 38%;
 }
 
 #techtable {
@@ -40,7 +40,7 @@
     width: 10%;
 }
 
-#cptable td, #gftable td, #techtable td, .wujiangout td, .wujiangin td, .armtable{
+#cptable td, #gftable td, #techtable td, .wujiangout td{
     border: 1px solid;
 }
 
@@ -66,6 +66,10 @@ span {
 }
 
 input {
+    width: 40px;
+}
+
+#gfcp {
     width: 50px;
 }
 
@@ -80,15 +84,18 @@ input {
     color: white;
 }
 
-#reportbutton {
+#headerbutton {
     position: absolute;
     top: 0;
     right: 0;
+}
+
+#reportbutton, #helpbutton {
     background-color: silver;
     color: black;
 }
 
-#calbutton, #resetbutton, #reportbutton {
+#calbutton, #resetbutton, #reportbutton, #helpbutton {
     border: none;
     padding: 10px 25px;
     text-align: center;
@@ -114,6 +121,6 @@ body {
     font-size: 15px;
 }
 
-#errordialog, #reportdialog, #reportsuccess {
+#errordialog, #reportdialog, #reportsuccess, #helpdialog {
     display: none;
 }

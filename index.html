@@ -10,8 +10,9 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>真三國戰力計算器</title>
-        <meta name="keywords" content="真三國大戰,啪啪三國,戰力計算器">
-        <meta name="description" content="戰力計算器,輸入武將數據,計算戰力">
+        <meta name="keywords" content="真三國大戰,啪啪三國,戰力,計算器">
+        <meta name="description" content="這是一個戰力計算器，主公可以輸入武將數據，計算戰力">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -357,125 +358,158 @@
                                 <span class="btypelevel3bingpopup"></span>
                             </div>
                         </div>
-
+                        
                         <table class="wujiangin">
                             <tr>
                                 <td>
-                                    <div>
-                                        <span>升級</span>
-                                        <button class="basemax">MAX</button>
-                                    </div>
-                                    <div>
-                                        Lv
-                                        <input class="baselevel" type="number" min=1 max=120 value=1>
-                                    </div>
-                                    <div>
-                                        <span>將魂</span>
-                                        <button class="soulmax">MAX</button>
-                                    </div>
-                                    <div>
-                                        Lv
-                                        <input class="soullevel" type="number" min=0 max=30 value=0>
-                                    </div>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <span>升級</span>
+                                                <button class="basemax">MAX</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Lv
+                                                <input class="baselevel" type="number" min=1 max=120 value=1>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>將魂</span>
+                                                <button class="soulmax">MAX</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Lv
+                                                <input class="soullevel" type="number" min=0 max=30 value=0>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </td>
 
                                 <td>
-                                <span>四聖石</span>
-                                <button class="stonemax">MAX</button>
-                                <div>
-                                    <span>青龍</span>
-                                    <input class="stonelevel dragonlevel" type="number" min=1 max=9 value=1>級
-                                    <input class="stonestar dragonstar" type="number" min=0 max=3 value=0>星
-                                </div>
-                                <div>
-                                    <span>白虎</span>
-                                    <input class="stonelevel tigerlevel" type="number" min=1 max=9 value=1>級
-                                    <input class="stonestar tigerstar" type="number" min=0 max=3 value=0>星
-                                </div>
-                                <div>
-                                    <span>朱雀</span>
-                                    <input class="stonelevel birdlevel" type="number" min=1 max=9 value=1>級
-                                    <input class="stonestar birdstar" type="number" min=0 max=3 value=0>星
-                                </div>
-                                <div>
-                                    <span>玄武</span>
-                                    <input class="stonelevel tortoiselevel" type="number" min=1 max=9 value=1>級
-                                    <input class="stonestar tortoisestar" type="number" min=0 max=3 value=0>星
-                                </div>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <span>四聖石</span>
+                                                <button class="stonemax">MAX</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>青龍</span>
+                                                <input class="stonelevel dragonlevel" type="number" min=1 max=9 value=1>級
+                                                <input class="stonestar dragonstar" type="number" min=0 max=3 value=0>星
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>白虎</span>
+                                                <input class="stonelevel tigerlevel" type="number" min=1 max=9 value=1>級
+                                                <input class="stonestar tigerstar" type="number" min=0 max=3 value=0>星
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>朱雀</span>
+                                                <input class="stonelevel birdlevel" type="number" min=1 max=9 value=1>級
+                                                <input class="stonestar birdstar" type="number" min=0 max=3 value=0>星
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span>玄武</span>
+                                                <input class="stonelevel tortoiselevel" type="number" min=1 max=9 value=1>級
+                                                <input class="stonestar tortoisestar" type="number" min=0 max=3 value=0>星
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </td>
 
                                 <td>
-                                <span>兵種</span>
-                                <button class="btypemax">MAX</button>
-                                <div>
-                                    <span>
-                                    <select class="book">
-                                        <option selected disabled hidden>左上</option>
-                                        <option>無</option>
-                                        <option class="book1a"></option>
-                                        <option class="book1b"></option>
-                                    </select>
-                                    <input class="booklevel" type="number" min=1 max=5>級
-                                    </span>
-                                    <span>
-                                    <select class="book">
-                                        <option selected disabled hidden>右上</option>
-                                        <option>無</option>
-                                        <option class="book5a"></option>
-                                        <option class="book5b"></option>
-                                    </select>
-                                    <input class="booklevel" type="number" min=1 max=5>級
-                                    </span>
-                                </div>
-                                <div>
-                                    <span>
-                                    <select class="book">
-                                        <option selected disabled hidden>左下</option>
-                                        <option>無</option>
-                                        <option class="book2a"></option>
-                                        <option class="book2b"></option>
-                                    </select>
-                                    <input class="booklevel" type="number" min=1 max=5>級
-                                    </span>
-                                    <span>
-                                    <select class="book">
-                                        <option selected disabled hidden>右下</option>
-                                        <option>無</option>
-                                        <option class="book4a"></option>
-                                        <option class="book4b"></option>
-                                    </select>
-                                    <input class="booklevel" type="number" min=1 max=5>級
-                                    </span>
-                                </div>
-                                <div>
-                                    <select class="book">
-                                        <option selected disabled hidden>下</option>
-                                        <option>無</option>
-                                        <option class="book3a"></option>
-                                        <option class="book3b"></option>
-                                    </select>
-                                    <input class="booklevel" type="number" min=1 max=5>級
-                                </div>
-                                <div>
-                                    <select class="btypelevel3">
-                                        <option selected disabled hidden>三階兵種</option>
-                                        <option>無</option>
-                                        <option class="btypelevel3a"></option>
-                                        <option class="btypelevel3b"></option>
-                                    </select>
-                                </div>
+                                    <table>
+                                        <tr>
+                                            <td colspan="2">
+                                                <span>兵種</span>
+                                                <button class="btypemax">MAX</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <select class="book">
+                                                    <option selected disabled hidden>左上</option>
+                                                    <option>無</option>
+                                                    <option class="book1a"></option>
+                                                    <option class="book1b"></option>
+                                                </select>
+                                                <input class="booklevel" type="number" min=1 max=5>級
+                                            </td>
+                                            <td>
+                                                <select class="book">
+                                                    <option selected disabled hidden>右上</option>
+                                                    <option>無</option>
+                                                    <option class="book5a"></option>
+                                                    <option class="book5b"></option>
+                                                </select>
+                                                <input class="booklevel" type="number" min=1 max=5>級
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <select class="book">
+                                                    <option selected disabled hidden>左下</option>
+                                                    <option>無</option>
+                                                    <option class="book2a"></option>
+                                                    <option class="book2b"></option>
+                                                </select>
+                                                <input class="booklevel" type="number" min=1 max=5>級
+                                            </td>
+                                            <td>
+                                                <select class="book">
+                                                    <option selected disabled hidden>右下</option>
+                                                    <option>無</option>
+                                                    <option class="book4a"></option>
+                                                    <option class="book4b"></option>
+                                                </select>
+                                                <input class="booklevel" type="number" min=1 max=5>級
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <select class="book">
+                                                    <option selected disabled hidden>下</option>
+                                                    <option>無</option>
+                                                    <option class="book3a"></option>
+                                                    <option class="book3b"></option>
+                                                </select>
+                                                <input class="booklevel" type="number" min=1 max=5>級
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <select class="btypelevel3">
+                                                    <option selected disabled hidden>三階兵種</option>
+                                                    <option>無</option>
+                                                    <option class="btypelevel3a"></option>
+                                                    <option class="btypelevel3b"></option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </td>
                             </tr>
                         </table>
 
                     </div>
 
-                    <!--戰器input-->
                     <table class="armtable">
                         <tr>
                             <td colspan="3">
-                            <span>戰器</span>
-                            <button class="armmax">MAX</button>
+                                <span>戰器</span>
+                                <button class="armmax">MAX</button>
                             </td>
                         </tr>
                         <tr>
@@ -586,7 +620,8 @@
             <button id="calbutton">計算</button>
         </div>
         
-        <div>
+        <div id="headerbutton">
+            <button id="helpbutton">協助我們</button>
             <button id="reportbutton">回報問題</button>
         </div>
         
@@ -594,13 +629,25 @@
         </div>
         
         <div id="reportdialog" title="回報問題">
+            <div>主公如有任何問題/建議/查詢，都可以告訢我們喔！</div>
             <form id="reportform">
-                <textarea rows="4" cols="30" name="form_field"></textarea>
+                <textarea rows="4" cols="40" name="form_field"></textarea>
             </form>
         </div>
         
         <div id="reportsuccess" title="感謝支持">
-            我們已收到主公您的回報！
+            我們已收到主公的回報！
+        </div>
+        
+        <div id="helpdialog" title="協助我們">
+            <div>希望主公能提供以下資料以協助我們完善工具：</div>
+            <div>－ 戰器強化</div>
+            <br>
+            <div>
+                <a target="_blank"
+                href="https://docs.google.com/spreadsheets/d/1F6QLDJu6AmmpbVsIUwMxKrzqc3CTcLoj9fTbb6hgNE0/edit?usp=sharing">按此連結至Google試算表</a>以加註形式提供資料
+            </div>
+            <div>感謝支持！</div>
         </div>
 
     </body>

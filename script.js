@@ -545,7 +545,7 @@ $(function(){
         var $arminput = $(this).closest(".wujiangself").next(".armtable").find("input,select,button");
 
         //clear wujiang output/cp, enable/disable input
-        $("#cptable").find("span").empty();
+        //$("#cptable").find("span").empty();
         $(this).siblings(".wujiangout").find("span").empty();
         if(wujiang.length>2){
             $wujiang.html(wujiang);

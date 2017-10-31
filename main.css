@@ -108,7 +108,7 @@ input {
 .popup {
     display: none;
     position: absolute;
-    width: 130px;
+    width: 150px;
     padding: 10px;
     background: #eeeeee;
     color: #000000;

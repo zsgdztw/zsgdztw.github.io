@@ -108,12 +108,16 @@ input {
 .popup {
     display: none;
     position: absolute;
-    width: 200px;
+    width: 130px;
     padding: 10px;
     background: #eeeeee;
     color: #000000;
     border: 1px solid #1a1a1a;
     font-size: 90%;
+}
+
+.armpopup {
+    width: 200px;
 }
 
 body {
@@ -123,4 +127,12 @@ body {
 
 #errordialog, #reportdialog, #reportsuccess, #helpdialog {
     display: none;
+}
+
+#announce {
+    position: absolute;
+    top: 0;
+    left: 30%;
+    right: 30%;
+    font-size: 15px;
 }

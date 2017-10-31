@@ -22,6 +22,11 @@
         <meta name="keywords" content="真三國大戰,啪啪三國,戰力,計算器">
         <meta name="description" content="這是一個戰力計算器，主公可以輸入武將數據，計算戰力">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:url"           content="https://zsgdztw.github.io" />
+        <meta property="og:type"          content="website" />
+        <meta property="og:title"         content="真三國戰力計算器" />
+        <meta property="og:description"   content="這是一個戰力計算器，主公可以輸入武將數據，計算戰力" />
+        <meta property="og:image"         content="image.jpg" />
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -32,7 +37,16 @@
     </head>
 
     <body>
-
+        <!-- Facebook Share -->
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = 'https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.10';
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+        
         <span><h2>真三國戰力計算器</h2></span>
         
         <table id="cptable">
@@ -630,6 +644,7 @@
         </div>
         
         <div id="headerbutton">
+            <div class="fb-share-button" data-href="https://zsgdztw.github.io/" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fzsgdztw.github.io%2F&amp;src=sdkpreparse">分享</a></div>
             <button id="helpbutton">協助我們</button>
             <button id="reportbutton">回報問題</button>
         </div>
@@ -656,6 +671,7 @@
                 <a target="_blank"
                 href="https://docs.google.com/spreadsheets/d/1F6QLDJu6AmmpbVsIUwMxKrzqc3CTcLoj9fTbb6hgNE0/edit?usp=sharing">按此連結至Google試算表</a>以加註形式提供資料
             </div>
+            <br>
             <div>感謝支持！</div>
         </div>
 

@@ -66,7 +66,13 @@ span {
 }
 
 input {
-    width: 40px;
+    width: 50px;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 0 6px;
 }
 
 #gfcp {

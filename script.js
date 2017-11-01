@@ -18,17 +18,21 @@ function calcp() {
         $(this).find(".sumbing").html(sumbing);
         
         var armbdcp = 0;
-        var i,j;
-        var armbd1 = [10,29,50,73,98,125,154,185,218,253,290,329,370,413,458];
-        var armbd2 = [30,80,170,300,470,680,930,1220];
-        $(this).next(".armtable").find(".armbd1").each(function(){
-            if(i = $(this).val()){
-                armbdcp += armbd1[i-1];
+        if($(this).find(".wujianglist").length>2 &&
+           ($(this).next(".armtable").find(".arm") !== '專屬' || $(this).next(".armtable").find(".arm") !== '無')){
+            var i,j;
+            var armbd1 = [10,29,50,73,98,125,154,185,218,253,290,329,370,413,458];
+            var armbd2 = [30,80,170,300,470,680,930,1220];
+            $(this).next(".armtable").find(".armbd1").each(function(){
+                if(i = $(this).val()){
+                    armbdcp += armbd1[i-1];
+                }
+            })
+            if(j = $(this).next(".armtable").find(".armbd2").val()){
+                armbdcp += armbd2[j-1];
             }
-        })
-        if(j = $(this).next(".armtable").find(".armbd2").val()){
-            armbdcp += armbd2[j-1];
         }
+        
         var cp = (sumwu+sumzhi+sumbing)*2+armbdcp;
         $(this).find(".cp").html(cp);
     })
@@ -139,8 +143,8 @@ $(function(){
     $("#tabs").tabs();
     
     //disable input
-    $(".wujiangself").find("input,select,button").not(".wujianglist").prop('disabled', true);
-    $(".armtable").find("input,select,button").prop('disabled', true);
+    //$(".wujiangself").find("input,select,button").not(".wujianglist").prop('disabled', true);
+    //$(".armtable").find("input,select,button").prop('disabled', true);
     
     //cal button
     $("#calbutton").click(function(){
@@ -444,11 +448,11 @@ $(function(){
                     if(armlevel>0){
                         var levelarr;
                         switch(armtype){
-                            case "劍": levelarr=[[3,2,4],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[35,32,63],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[227,224,445]];break;
-                            case "刀": levelarr=[[2,2,5],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[43,35,96],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[183,145,403],[224,178,494]];break;
-                            case "槍": levelarr=[[3,2,4],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[40,26,63],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[273,178,445]];break;
-                            case "弓": levelarr=[[2,3,4],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[224,227,445]];break;
-                            case "扇": levelarr=[[2,3,4],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[32,40,57],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[224,273,399]];break;
+                            case "劍": levelarr=[[3,2,4],[6,5,9],[10,8,15],[14,12,23],[19,17,33],[0,0,0],[35,32,63],[46,43,85],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[227,224,445]];break;
+                            case "刀": levelarr=[[2,2,5],[5,4,10],[8,7,17],[12,10,26],[17,14,37],[0,0,0],[0,0,0],[43,35,96],[56,45,125],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[183,145,403],[224,178,494]];break;
+                            case "槍": levelarr=[[3,2,4],[6,4,9],[10,7,15],[15,10,23],[21,14,33],[0,0,0],[40,26,63],[54,35,85],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[273,178,445]];break;
+                            case "弓": levelarr=[[2,3,4],[5,6,9],[8,10,15],[12,14,23],[17,19,33],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[224,227,445]];break;
+                            case "扇": levelarr=[[2,3,4],[5,6,8],[8,10,14],[12,15,21],[0,0,0],[0,0,0],[32,40,57],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[224,273,399]];break;
                         }
                         levelwu = levelarr[armlevel-1][0];
                         levelzhi = levelarr[armlevel-1][1];
@@ -541,238 +545,252 @@ $(function(){
         var $wujiang = $(this).closest(".wujiangself").find(".wujiang");
         var $btype = $(this).closest(".wujiangself").find(".wujiangbtype");
         var $type = $(this).closest(".wujiangself").find(".wujiangtype");
-        var $wujiangselfinput = $(this).closest(".wujiangself").find("input,select,button").not(".wujianglist");
-        var $arminput = $(this).closest(".wujiangself").next(".armtable").find("input,select,button");
+        //var $wujiangselfinputA = $(this).closest(".wujiangself").find("input,select,button").not(".wujianglist");
+        //var $wujiangselfinputB = $(this).closest(".wujiangself").find("input,select,button").not(".wujianglist").not(".booklevel");
+        //var $arminputA = $(this).closest(".wujiangself").next(".armtable").find("input,select,button");
+        //var $arminputB = $(this).closest(".wujiangself").next(".armtable").find("button,.arm");
 
-        //clear wujiang output/cp, enable/disable input
+        //clear wujiang output, enable/disable input
         //$("#cptable").find("span").empty();
         $(this).siblings(".wujiangout").find("span").empty();
         if(wujiang.length>2){
             $wujiang.html(wujiang);
             $btype.html(btype);
             $type.html(type);
-            $wujiangselfinput.prop('disabled', false);
-            $arminput.prop('disabled', false);
+            
+            //$wujiangselfinputB.prop('disabled', false);
+            //$arminputB.prop('disabled', false);
+            //$wujiangselfinputA.prop('disabled', false);
+            //$arminputA.prop('disabled', false);
+            
+            //baselevel,soullevel,stone
+            $(this).closest(".wujiangself").find(".baselevel").val(1);
+            $(this).closest(".wujiangself").find(".soullevel").val(0);
+            $(this).closest(".wujiangself").find(".stonelevel").val(1);
+            $(this).closest(".wujiangself").find(".stonestar").val(0);
+            
+            //btype
+            var blue = "武峰", red = "三疑", yellow = "兵道", purple = "軍略", green = "金鼓", orange = "文伐";
+            var $book1a = $(this).closest(".wujiangself").find(".book1a");
+            var $book1b = $(this).closest(".wujiangself").find(".book1b");
+            var $book2a = $(this).closest(".wujiangself").find(".book2a");
+            var $book2b = $(this).closest(".wujiangself").find(".book2b");
+            var $book3a = $(this).closest(".wujiangself").find(".book3a");
+            var $book3b = $(this).closest(".wujiangself").find(".book3b");
+            var $book4a = $(this).closest(".wujiangself").find(".book4a");
+            var $book4b = $(this).closest(".wujiangself").find(".book4b");
+            var $book5a = $(this).closest(".wujiangself").find(".book5a");
+            var $book5b = $(this).closest(".wujiangself").find(".book5b");
+            var $btypelevel3a = $(this).closest(".wujiangself").find(".btypelevel3a");
+            var $btypelevel3b = $(this).closest(".wujiangself").find(".btypelevel3b");
+            $book1a.html(blue);
+            $book1b.html(green);
+            $book2a.html(red);
+            $book2b.html(purple);
+            $book3a.html(yellow);
+            $book3b.html(orange);
+            switch(btype) {
+                case "槍兵":
+                    $btypelevel3a.html("盾槍兵");
+                    $btypelevel3b.html("長戟兵"); 
+                    $book4a.html(green);
+                    $book4b.html(orange);
+                    $book5a.html(yellow);
+                    $book5b.html(orange); break;
+                case "弓兵":
+                    $btypelevel3a.html("火矢兵"); 
+                    $btypelevel3b.html("連弩兵"); 
+                    $book4a.html(purple);
+                    $book4b.html(orange);
+                    $book5a.html(red);
+                    $book5b.html(purple); break;
+                case "騎兵":
+                    $btypelevel3a.html("重騎兵");  
+                    $btypelevel3b.html("驃騎兵");
+                    $book4a.html(purple);
+                    $book4b.html(green);
+                    $book5a.html(blue);
+                    $book5b.html(green); break;
+            }
+            switch(wujiang){
+                case "龍膽趙雲":
+                case "龍膽趙雲★":
+                case "霸王孫策":
+                case "霸王孫策★":
+                case "浴血凌統":
+                case "浴血凌統★":
+                    $book5a.html(blue);
+                    $book5b.html(green); break;
+                case "麒麟姜維":
+                case "麒麟姜維★":
+                    $book4a.html(red);
+                    $book4b.html(purple); break;
+                case "奸雄曹操":
+                    $book5a.html(yellow);
+                    $book5b.html(orange); break;
+                case "臥龍諸葛亮":
+                case "臥龍諸葛亮★":
+                case "業炎周瑜":
+                case "業炎周瑜★":
+                case "絕舞貂蟬":
+                case "絕舞貂蟬★":
+                    $book4a.html(red);
+                    $book4b.html(purple); break;
+                case "振威張遼":
+                case "振威張遼★":
+                case "一騎關羽":
+                case "鬼神呂布":
+                case "鬼神呂布★":
+                    $book4a.html(blue);
+                    $book4b.html(green); break;
+                case "狼顧司馬懿":
+                case "狼顧司馬懿★":
+                case "文帝曹丕":
+                    $book5a.html(purple);
+                    $book5b.html(green); break;
+            }
+
+            //arm
+            var $arm = $(this).closest(".wujiangself").next().find(".arm");
+            var $arm1 = $(this).closest(".wujiangself").next().find(".arm1");
+            var $arm2 = $(this).closest(".wujiangself").next().find(".arm2");
+            $arm2.remove();
+            switch(wujiang){
+                case "昭烈劉備":
+                case "昭烈劉備★":
+                case "仁德劉備":$arm1.html("雌雄雙股劍").attr("type","劍");break;
+                case "武聖關羽":
+                case "武聖關羽★":$arm1.html("青龍偃月刀").attr("type","刀");break;
+                case "暴怒張飛":
+                case "桓侯張飛":$arm1.html("丈八蛇矛").attr("type","槍");break;
+                case "龍膽趙雲":
+                case "龍膽趙雲★":$arm1.html("青釭劍").attr("type","劍");break;
+                case "臥龍諸葛亮":
+                case "臥龍諸葛亮":
+                case "臥龍諸葛亮★":
+                case "臥龍諸葛亮★":
+                case "七星諸葛亮":$arm1.html("諸葛連弩").attr("type","弓");
+                                $arm.append($("<option/>").html("朱雀羽扇").attr("type","扇").addClass("arm2"));break;
+                case "錦獅馬超":$arm1.html("龍騎槍").attr("type","槍");break;
+                case "弓神黃忠":
+                case "弓神黃忠★":
+                case "討虜黃忠":$arm1.html("黃楊大弓").attr("type","弓");break;
+                case "麒麟姜維":
+                case "麒麟姜維★":
+                case "斗膽姜維":$arm1.html("若麒麟牙").attr("type","槍");break;
+                case "弓腰姬孫尚香":
+                case "弓腰姬孫尚香★":$arm1.html("鵲畫弓").attr("type","弓");break;
+                case "阿醜黃月英":
+                case "傑女黃月英":
+                case "傑女黃月英★":$arm1.html("諸葛連弩").attr("type","弓");break;
+                case "鳳雛龐統":
+                case "智極龐統":$arm1.html("驚凰弓").attr("type","弓");break;
+                case "先鋒廖化":
+                case "忠烈廖化":$arm1.html("三尖兩刃刀").attr("type","刀");break;
+                case "驍勇魏延":
+                case "狂骨魏延":$arm1.html("鬼魘刀").attr("type","刀");break;
+                case "武帝曹操":
+                case "武帝曹操":
+                case "武帝曹操★":
+                case "武帝曹操★":
+                case "奸雄曹操":$arm1.html("倚天劍").attr("type","劍");
+                                $arm.append($("<option/>").html("青釭劍").attr("type","劍").addClass("arm2"));break;
+                case "獨目夏侯惇":
+                case "獨目夏侯惇★":
+                case "蒼狼夏侯惇":$arm1.html("破軍斬").attr("type","刀");break;
+                case "振威張遼":
+                case "振威張遼★":$arm1.html("滄月").attr("type","槍");break;
+                case "一騎關羽":$arm1.html("青龍偃月刀").attr("type","刀");break;
+                case "狼顧司馬懿":
+                case "狼顧司馬懿★":
+                case "宣王司馬懿":$arm1.html("窮奇羽扇").attr("type","扇");break;
+                case "洛神甄姬":$arm1.html("月下美人").attr("type","扇");break;
+                case "毒士賈詡":
+                case "毒士賈詡★":
+                case "亂武賈詡":
+                case "亂武賈詡★":$arm1.html("窮奇羽扇").attr("type","扇");break;
+                case "疾風曹仁":
+                case "疾風曹仁★":
+                case "征南曹仁":$arm1.html("摧城槍").attr("type","槍");break;
+                case "驅虎荀彧":
+                case "令香荀彧":$arm1.html("弱水劍").attr("type","劍");break;
+                case "文帝曹丕":
+                case "滅奏曹丕":$arm1.html("龍鱗劍").attr("type","劍");break;
+                case "惡來典韋":
+                case "英靈典韋":$arm1.html("蚩尤重戟").attr("type","槍");break;
+                case "武烈孫堅":
+                case "武烈孫堅★":
+                case "猛虎孫堅":$arm1.html("古錠刀").attr("type","刀");break;
+                case "霸王孫策":
+                case "霸王孫策★":
+                case "馳騁孫策":$arm1.html("霸王槍").attr("type","槍");break;
+                case "吳王孫權":
+                case "吳王孫權★":
+                case "若虎孫權":$arm1.html("白虎銀槍").attr("type","槍");break;
+                case "業炎周瑜":
+                case "業炎周瑜★":
+                case "顧曲周瑜":$arm1.html("龍吟弓").attr("type","弓");break;
+                case "矢志太史慈":
+                case "矢志太史慈★":
+                case "感古太史慈":$arm1.html("虎撲弓").attr("type","弓");break;
+                case "焚天陸遜":
+                case "儒將陸遜":
+                case "儒將陸遜★":$arm1.html("龍吟弓").attr("type","弓");break;
+                case "郡主孫尚香":$arm1.html("鵲畫弓").attr("type","弓");break;
+                case "克己呂蒙":
+                case "虎威呂蒙":$arm1.html("虎撲弓").attr("type","弓");break;
+                case "國士凌統":
+                case "浴血凌統":
+                case "浴血凌統★":$arm1.html("燕回閃").attr("type","劍");break;
+                case "遊俠甘寧":
+                case "遊俠甘寧":
+                case "鬥將甘寧":$arm1.html("霸海刀").attr("type","刀");
+                                $arm.append($("<option/>").html("千浪破").attr("type","弓").addClass("arm2"));break;
+                case "締盟魯肅":$arm1.html("玄武折扇").attr("type","扇");break;
+                case "忠魂魯肅":
+                case "鬼神呂布":
+                case "鬼神呂布":
+                case "鬼神呂布★":
+                case "鬼神呂布★":
+                case "修羅呂布":$arm1.html("方天畫戟").attr("type","槍");
+                                $arm.append($("<option/>").html("龍舌弓").attr("type","弓").addClass("arm2"));break;
+                case "猩紅呂姬":
+                case "猩紅呂姬★":
+                case "雙子呂姬":
+                case "雙子呂姬★":$arm1.html("龍舌弓").attr("type","弓");break;
+                case "戰姬呂玲綺":
+                case "雙子呂玲綺":
+                case "雙子呂玲綺★":$arm1.html("方天畫戟").attr("type","槍");break;
+                case "召虎張遼":
+                case "召虎張遼★":$arm1.html("滄月").attr("type","槍");break;
+                case "魔君董卓":
+                case "魔君董卓★":
+                case "濁世董卓":$arm1.html("七星刀").attr("type","刀");break;
+                case "絕舞貂蟬":
+                case "絕舞貂蟬★":
+                case "傾世貂蟬":
+                case "傾世貂蟬★":
+                case "靈蛇甄姬":$arm1.html("月下美人").attr("type","扇");break;
+                case "神威趙雲":$arm1.html("青釭劍").attr("type","劍");break;
+                case "鐵騎馬超":
+                case "鐵騎馬超★":$arm1.html("龍騎槍").attr("type","槍");break;
+                case "天公張角":
+                case "符咒張角":$arm1.html("黃天之弓").attr("type","弓");break;
+                case "鴉殺顏良":$arm1.html("魍魎").attr("type","槍");break;
+                case "獵狐文醜":$arm1.html("魑魅").attr("type","槍");break;
+                case "思召袁紹":$arm1.html("思召劍").attr("type","劍");break;
+            }
         }
         else{
-            $wujiangselfinput.prop('disabled', true);
-            $arminput.prop('disabled', true);
+            //無
+            //$wujiangselfinputA.prop('disabled', true);
+            //$arminputA.prop('disabled', true);
         }
         
         //hide popup
         $(this).closest(".wujiangself").find(".popup").prop("show",0);
         
-        //btype
-        var blue = "武峰", red = "三疑", yellow = "兵道", purple = "軍略", green = "金鼓", orange = "文伐";
-        var $book1a = $(this).closest(".wujiangself").find(".book1a");
-        var $book1b = $(this).closest(".wujiangself").find(".book1b");
-        var $book2a = $(this).closest(".wujiangself").find(".book2a");
-        var $book2b = $(this).closest(".wujiangself").find(".book2b");
-        var $book3a = $(this).closest(".wujiangself").find(".book3a");
-        var $book3b = $(this).closest(".wujiangself").find(".book3b");
-        var $book4a = $(this).closest(".wujiangself").find(".book4a");
-        var $book4b = $(this).closest(".wujiangself").find(".book4b");
-        var $book5a = $(this).closest(".wujiangself").find(".book5a");
-        var $book5b = $(this).closest(".wujiangself").find(".book5b");
-        var $btypelevel3a = $(this).closest(".wujiangself").find(".btypelevel3a");
-        var $btypelevel3b = $(this).closest(".wujiangself").find(".btypelevel3b");
-        $book1a.html(blue);
-        $book1b.html(green);
-        $book2a.html(red);
-        $book2b.html(purple);
-        $book3a.html(yellow);
-        $book3b.html(orange);
-        switch(btype) {
-            case "槍兵":
-                $btypelevel3a.html("盾槍兵");
-                $btypelevel3b.html("長戟兵"); 
-                $book4a.html(green);
-                $book4b.html(orange);
-                $book5a.html(yellow);
-                $book5b.html(orange); break;
-            case "弓兵":
-                $btypelevel3a.html("火矢兵"); 
-                $btypelevel3b.html("連弩兵"); 
-                $book4a.html(purple);
-                $book4b.html(orange);
-                $book5a.html(red);
-                $book5b.html(purple); break;
-            case "騎兵":
-                $btypelevel3a.html("重騎兵");  
-                $btypelevel3b.html("驃騎兵");
-                $book4a.html(purple);
-                $book4b.html(green);
-                $book5a.html(blue);
-                $book5b.html(green); break;
-        }
-        switch(wujiang){
-            case "龍膽趙雲":
-            case "龍膽趙雲★":
-            case "霸王孫策":
-            case "霸王孫策★":
-            case "浴血凌統":
-            case "浴血凌統★":
-                $book5a.html(blue);
-                $book5b.html(green); break;
-            case "麒麟姜維":
-            case "麒麟姜維★":
-                $book4a.html(red);
-                $book4b.html(purple); break;
-            case "奸雄曹操":
-                $book5a.html(yellow);
-                $book5b.html(orange); break;
-            case "臥龍諸葛亮":
-            case "臥龍諸葛亮★":
-            case "業炎周瑜":
-            case "業炎周瑜★":
-            case "絕舞貂蟬":
-            case "絕舞貂蟬★":
-                $book4a.html(red);
-                $book4b.html(purple); break;
-            case "振威張遼":
-            case "振威張遼★":
-            case "一騎關羽":
-            case "鬼神呂布":
-            case "鬼神呂布★":
-                $book4a.html(blue);
-                $book4b.html(green); break;
-            case "狼顧司馬懿":
-            case "狼顧司馬懿★":
-            case "文帝曹丕":
-                $book5a.html(purple);
-                $book5b.html(green); break;
-        }
         
-        //arm
-        var $arm = $(this).closest(".wujiangself").next().find(".arm");
-        var $arm1 = $(this).closest(".wujiangself").next().find(".arm1");
-        var $arm2 = $(this).closest(".wujiangself").next().find(".arm2");
-        $arm2.remove();
-        switch(wujiang){
-            case "昭烈劉備":
-            case "昭烈劉備★":
-            case "仁德劉備":$arm1.html("雌雄雙股劍").attr("type","劍");break;
-            case "武聖關羽":
-            case "武聖關羽★":$arm1.html("青龍偃月刀").attr("type","刀");break;
-            case "暴怒張飛":
-            case "桓侯張飛":$arm1.html("丈八蛇矛").attr("type","槍");break;
-            case "龍膽趙雲":
-            case "龍膽趙雲★":$arm1.html("青釭劍").attr("type","劍");break;
-            case "臥龍諸葛亮":
-            case "臥龍諸葛亮":
-            case "臥龍諸葛亮★":
-            case "臥龍諸葛亮★":
-            case "七星諸葛亮":$arm1.html("諸葛連弩").attr("type","弓");
-                            $arm.append($("<option/>").html("朱雀羽扇").attr("type","扇").addClass("arm2"));break;
-            case "錦獅馬超":$arm1.html("龍騎槍").attr("type","槍");break;
-            case "弓神黃忠":
-            case "弓神黃忠★":
-            case "討虜黃忠":$arm1.html("黃楊大弓").attr("type","弓");break;
-            case "麒麟姜維":
-            case "麒麟姜維★":
-            case "斗膽姜維":$arm1.html("若麒麟牙").attr("type","槍");break;
-            case "弓腰姬孫尚香":
-            case "弓腰姬孫尚香★":$arm1.html("鵲畫弓").attr("type","弓");break;
-            case "阿醜黃月英":
-            case "傑女黃月英":
-            case "傑女黃月英★":$arm1.html("諸葛連弩").attr("type","弓");break;
-            case "鳳雛龐統":
-            case "智極龐統":$arm1.html("驚凰弓").attr("type","弓");break;
-            case "先鋒廖化":
-            case "忠烈廖化":$arm1.html("三尖兩刃刀").attr("type","刀");break;
-            case "驍勇魏延":
-            case "狂骨魏延":$arm1.html("鬼魘刀").attr("type","刀");break;
-            case "武帝曹操":
-            case "武帝曹操":
-            case "武帝曹操★":
-            case "武帝曹操★":
-            case "奸雄曹操":$arm1.html("倚天劍").attr("type","劍");
-                            $arm.append($("<option/>").html("青釭劍").attr("type","劍").addClass("arm2"));break;
-            case "獨目夏侯惇":
-            case "獨目夏侯惇★":
-            case "蒼狼夏侯惇":$arm1.html("破軍斬").attr("type","刀");break;
-            case "振威張遼":
-            case "振威張遼★":$arm1.html("滄月").attr("type","槍");break;
-            case "一騎關羽":$arm1.html("青龍偃月刀").attr("type","刀");break;
-            case "狼顧司馬懿":
-            case "狼顧司馬懿★":
-            case "宣王司馬懿":$arm1.html("窮奇羽扇").attr("type","扇");break;
-            case "洛神甄姬":$arm1.html("月下美人").attr("type","扇");break;
-            case "毒士賈詡":
-            case "毒士賈詡★":
-            case "亂武賈詡":
-            case "亂武賈詡★":$arm1.html("窮奇羽扇").attr("type","扇");break;
-            case "疾風曹仁":
-            case "疾風曹仁★":
-            case "征南曹仁":$arm1.html("摧城槍").attr("type","槍");break;
-            case "驅虎荀彧":
-            case "令香荀彧":$arm1.html("弱水劍").attr("type","劍");break;
-            case "文帝曹丕":
-            case "滅奏曹丕":$arm1.html("龍鱗劍").attr("type","劍");break;
-            case "惡來典韋":
-            case "英靈典韋":$arm1.html("蚩尤重戟").attr("type","槍");break;
-            case "武烈孫堅":
-            case "武烈孫堅★":
-            case "猛虎孫堅":$arm1.html("古錠刀").attr("type","刀");break;
-            case "霸王孫策":
-            case "霸王孫策★":
-            case "馳騁孫策":$arm1.html("霸王槍").attr("type","槍");break;
-            case "吳王孫權":
-            case "吳王孫權★":
-            case "若虎孫權":$arm1.html("白虎銀槍").attr("type","槍");break;
-            case "業炎周瑜":
-            case "業炎周瑜★":
-            case "顧曲周瑜":$arm1.html("龍吟弓").attr("type","弓");break;
-            case "矢志太史慈":
-            case "矢志太史慈★":
-            case "感古太史慈":$arm1.html("虎撲弓").attr("type","弓");break;
-            case "焚天陸遜":
-            case "儒將陸遜":
-            case "儒將陸遜★":$arm1.html("龍吟弓").attr("type","弓");break;
-            case "郡主孫尚香":$arm1.html("鵲畫弓").attr("type","弓");break;
-            case "克己呂蒙":
-            case "虎威呂蒙":$arm1.html("虎撲弓").attr("type","弓");break;
-            case "國士凌統":
-            case "浴血凌統":
-            case "浴血凌統★":$arm1.html("燕回閃").attr("type","劍");break;
-            case "遊俠甘寧":
-            case "遊俠甘寧":
-            case "鬥將甘寧":$arm1.html("霸海刀").attr("type","刀");
-                            $arm.append($("<option/>").html("千浪破").attr("type","弓").addClass("arm2"));break;
-            case "締盟魯肅":$arm1.html("玄武折扇").attr("type","扇");break;
-            case "忠魂魯肅":
-            case "鬼神呂布":
-            case "鬼神呂布":
-            case "鬼神呂布★":
-            case "鬼神呂布★":
-            case "修羅呂布":$arm1.html("方天畫戟").attr("type","槍");
-                            $arm.append($("<option/>").html("龍舌弓").attr("type","弓").addClass("arm2"));break;
-            case "猩紅呂姬":
-            case "猩紅呂姬★":
-            case "雙子呂姬":
-            case "雙子呂姬★":$arm1.html("龍舌弓").attr("type","弓");break;
-            case "戰姬呂玲綺":
-            case "雙子呂玲綺":
-            case "雙子呂玲綺★":$arm1.html("方天畫戟").attr("type","槍");break;
-            case "召虎張遼":
-            case "召虎張遼★":$arm1.html("滄月").attr("type","槍");break;
-            case "魔君董卓":
-            case "魔君董卓★":
-            case "濁世董卓":$arm1.html("七星刀").attr("type","刀");break;
-            case "絕舞貂蟬":
-            case "絕舞貂蟬★":
-            case "傾世貂蟬":
-            case "傾世貂蟬★":
-            case "靈蛇甄姬":$arm1.html("月下美人").attr("type","扇");break;
-            case "神威趙雲":$arm1.html("青釭劍").attr("type","劍");break;
-            case "鐵騎馬超":
-            case "鐵騎馬超★":$arm1.html("龍騎槍").attr("type","槍");break;
-            case "天公張角":
-            case "符咒張角":$arm1.html("黃天之弓").attr("type","弓");break;
-            case "鴉殺顏良":$arm1.html("魍魎").attr("type","槍");break;
-            case "獵狐文醜":$arm1.html("魑魅").attr("type","槍");break;
-            case "思召袁紹":$arm1.html("思召劍").attr("type","劍");break;
-        }
     })
     
     //tabs
@@ -834,6 +852,7 @@ $(function(){
         $(this).closest(".wujiangin").find(".book4a").prop('selected',true);
         $(this).closest(".wujiangin").find(".book5a").prop('selected',true);
         $(this).closest(".wujiangin").find(".btypelevel3a").prop('selected',true);
+        //$(this).closest(".wujiangin").find(".booklevel").prop('disabled',false);
     })
     
     //maxarm
@@ -864,25 +883,29 @@ $(function(){
         }
         $(this).closest(".armtable").find(".armsltype").val("兵力提升");
         $(this).closest(".armtable").find(".armsl").val("100").next().show();
+        //$(this).closest(".armtable").find("input,select").prop('disabled',false);
     })
     
     //book
     $(this).find(".book").change(function(){
         if($(this).find(":selected").val()==="無"){
-            $(this).next().val("");
+            //$(this).next().val("");
+            //$(this).next().prop('disabled',true);
         }
         else{
             if(!$(this).next().val()){
                 $(this).next().val("1");
             }
+            //$(this).next().prop('disabled',false);
         }
     })
     
     //arm
     $(".arm").change(function(){
         if($(this).find(":selected").val()==="無"){
-            $(this).closest(".armtable").find("input").val("");
-            $(this).closest(".armtable").find("select").val("無");
+            //$(this).closest(".armtable").find("input,select").not(this).val("");
+            //$(this).closest(".armtable").find("select").val("無");
+            //$(this).closest(".armtable").find("input,select").not(this).prop('disabled',true);
         }
         else{
             $(this).closest(".armtable").find(".armbase").each(function(){
@@ -892,12 +915,13 @@ $(function(){
             })
             $(this).closest(".armtable").find(".armbd").each(function(){
                 if(!$(this).val()){
-                    $(this).val(1);
+                    $(this).val(0);
                 }
             })
             if(!$(this).closest(".armtable").find(".armlevel").val()){
                 $(this).closest(".armtable").find(".armlevel").val(0);
             }
+            //$(this).closest(".armtable").find("input,select").prop('disabled',false);
         }
     })
     

@@ -5,6 +5,7 @@
 對應版本：4.2 
 
 -->
+
 <html lang="en">
     <head>
         <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -123,7 +124,7 @@
                         <br>
                         <select class="wujianglist">
 
-                            <option selected disabled hidden>武將</option>
+                            <option hidden>武將</option>
                             <option>無</option>
                             <option wu=610 zhi=464 bing=760 btype="槍兵" type="統帥將軍型" asso="諸葛亮,關羽,張飛,孫尚香">昭烈劉備</option>
                             <option wu=671 zhi=511 bing=836 btype="槍兵" type="統帥將軍型" asso="諸葛亮,關羽,張飛,孫尚香">昭烈劉備★</option>
@@ -395,7 +396,7 @@
                                         <tr>
                                             <td>
                                                 Lv
-                                                <input class="baselevel" type="number" min=1 max=120 value=1>
+                                                <input class="baselevel" type="number" min=1 max=120>
                                             </td>
                                         </tr>
                                         <tr>
@@ -407,7 +408,7 @@
                                         <tr>
                                             <td>
                                                 Lv
-                                                <input class="soullevel" type="number" min=0 max=30 value=0>
+                                                <input class="soullevel" type="number" min=0 max=30>
                                             </td>
                                         </tr>
                                     </table>
@@ -424,29 +425,113 @@
                                         <tr>
                                             <td>
                                                 <span>青龍</span>
-                                                <input class="stonelevel dragonlevel" type="number" min=1 max=9 value=1>級
-                                                <input class="stonestar dragonstar" type="number" min=0 max=3 value=0>星
+                                                <!--<input class="stonelevel dragonlevel" type="number" min=1 max=9 value=1>級
+                                                <input class="stonestar dragonstar" type="number" min=0 max=3 value=0>星-->
+                                                <select class="stonelevel dragonlevel">
+                                                    <option hidden></option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                    <option>6</option>
+                                                    <option>7</option>
+                                                    <option>8</option>
+                                                    <option>9</option>
+                                                </select>
+                                                級
+                                                <select class="stonestar dragonstar">
+                                                    <option hidden></option>
+                                                    <option>0</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
+                                                星
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <span>白虎</span>
-                                                <input class="stonelevel tigerlevel" type="number" min=1 max=9 value=1>級
-                                                <input class="stonestar tigerstar" type="number" min=0 max=3 value=0>星
+                                                <!--<input class="stonelevel tigerlevel" type="number" min=1 max=9 value=1>級
+                                                <input class="stonestar tigerstar" type="number" min=0 max=3 value=0>星-->
+                                                <select class="stonelevel tigerlevel">
+                                                    <option hidden></option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                    <option>6</option>
+                                                    <option>7</option>
+                                                    <option>8</option>
+                                                    <option>9</option>
+                                                </select>
+                                                級
+                                                <select class="stonestar tigerstar">
+                                                    <option hidden></option>
+                                                    <option>0</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
+                                                星
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <span>朱雀</span>
-                                                <input class="stonelevel birdlevel" type="number" min=1 max=9 value=1>級
-                                                <input class="stonestar birdstar" type="number" min=0 max=3 value=0>星
+                                                <!--<input class="stonelevel birdlevel" type="number" min=1 max=9 value=1>級
+                                                <input class="stonestar birdstar" type="number" min=0 max=3 value=0>星-->
+                                                <select class="stonelevel birdlevel">
+                                                    <option hidden></option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                    <option>6</option>
+                                                    <option>7</option>
+                                                    <option>8</option>
+                                                    <option>9</option>
+                                                </select>
+                                                級
+                                                <select class="stonestar birdstar">
+                                                    <option hidden></option>
+                                                    <option>0</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
+                                                星
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <span>玄武</span>
-                                                <input class="stonelevel tortoiselevel" type="number" min=1 max=9 value=1>級
-                                                <input class="stonestar tortoisestar" type="number" min=0 max=3 value=0>星
+                                                <!--<input class="stonelevel tortoiselevel" type="number" min=1 max=9 value=1>級
+                                                <input class="stonestar tortoisestar" type="number" min=0 max=3 value=0>星-->
+                                                <select class="stonelevel tortoiselevel">
+                                                    <option hidden></option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                    <option>6</option>
+                                                    <option>7</option>
+                                                    <option>8</option>
+                                                    <option>9</option>
+                                                </select>
+                                                級
+                                                <select class="stonestar tortoisestar">
+                                                    <option hidden></option>
+                                                    <option>0</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
+                                                星
                                             </td>
                                         </tr>
                                     </table>
@@ -461,54 +546,99 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>
+                                            <td colspan="2">
                                                 <select class="book">
-                                                    <option selected disabled hidden>左上</option>
+                                                    <option hidden>上</option>
                                                     <option>無</option>
                                                     <option class="book1a"></option>
                                                     <option class="book1b"></option>
                                                 </select>
-                                                <input class="booklevel" type="number" min=1 max=5>級
-                                            </td>
-                                            <td>
-                                                <select class="book">
-                                                    <option selected disabled hidden>右上</option>
-                                                    <option>無</option>
-                                                    <option class="book5a"></option>
-                                                    <option class="book5b"></option>
+                                                <!--<input class="booklevel" type="number" min=1 max=5>級-->
+                                                <select class="booklevel">
+                                                    <option hidden></option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
                                                 </select>
-                                                <input class="booklevel" type="number" min=1 max=5>級
+                                                級
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <select class="book">
-                                                    <option selected disabled hidden>左下</option>
+                                                    <option hidden>左</option>
                                                     <option>無</option>
                                                     <option class="book2a"></option>
                                                     <option class="book2b"></option>
                                                 </select>
-                                                <input class="booklevel" type="number" min=1 max=5>級
+                                                <!--<input class="booklevel" type="number" min=1 max=5>級-->
+                                                <select class="booklevel">
+                                                    <option hidden></option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
+                                                級
                                             </td>
                                             <td>
                                                 <select class="book">
-                                                    <option selected disabled hidden>右下</option>
+                                                    <option hidden>右</option>
                                                     <option>無</option>
-                                                    <option class="book4a"></option>
-                                                    <option class="book4b"></option>
+                                                    <option class="book5a"></option>
+                                                    <option class="book5b"></option>
                                                 </select>
-                                                <input class="booklevel" type="number" min=1 max=5>級
-                                            </td>
+                                                <!--<input class="booklevel" type="number" min=1 max=5>級-->
+                                                <select class="booklevel">
+                                                    <option hidden></option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
+                                                級
+                                            </td>  
                                         </tr>
                                         <tr>
-                                            <td colspan="2">
+                                            <td>
                                                 <select class="book">
-                                                    <option selected disabled hidden>下</option>
+                                                    <option hidden>左下</option>
                                                     <option>無</option>
                                                     <option class="book3a"></option>
                                                     <option class="book3b"></option>
                                                 </select>
-                                                <input class="booklevel" type="number" min=1 max=5>級
+                                                <!--<input class="booklevel" type="number" min=1 max=5>級-->
+                                                <select class="booklevel">
+                                                    <option hidden></option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
+                                                級
+                                            </td>
+                                            <td>
+                                                <select class="book">
+                                                    <option hidden>右下</option>
+                                                    <option>無</option>
+                                                    <option class="book4a"></option>
+                                                    <option class="book4b"></option>
+                                                </select>
+                                                <!--<input class="booklevel" type="number" min=1 max=5>級-->
+                                                <select class="booklevel">
+                                                    <option hidden></option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
+                                                級
                                             </td>
                                         </tr>
                                         <tr>
@@ -552,7 +682,26 @@
                                 </select>
                                 <span>
                                     Lv
-                                    <input class="armlevel" type="number" min=1 max=15>
+                                    <!--<input class="armlevel" type="number" min=1 max=15>-->
+                                    <select class="armlevel">
+                                        <option hidden></option>
+                                        <option>0</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                        <option>7</option>
+                                        <option>8</option>
+                                        <option>9</option>
+                                        <option>10</option>
+                                        <option>11</option>
+                                        <option>12</option>
+                                        <option>13</option>
+                                        <option>14</option>
+                                        <option>15</option>
+                                    </select>
                                 </span>
                             </div>
                         </td>
@@ -601,21 +750,71 @@
                             </div>
                             </td>
                             <td>
-                            <div>
-                            <span>小被動</span>
-                            Lv
-                            <input class="armbd armbd1" type="number" min=1 max=15>
-                            </div>
-                            <div>
-                            <span>小被動</span>
-                            Lv
-                            <input class="armbd armbd1" type="number" min=1 max=15>
-                            </div>
-                            <div>
-                            <span>大被動</span>
-                            Lv
-                            <input class="armbd armbd2" type="number" min=1 max=8>
-                            </div>
+                                <div>
+                                    <span>小被動</span>
+                                    Lv
+                                    <!--<input class="armbd armbd1" type="number" min=1 max=15>-->
+                                    <select class="armbd armbd1">
+                                        <option hidden></option>
+                                        <option>0</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                        <option>7</option>
+                                        <option>8</option>
+                                        <option>9</option>
+                                        <option>10</option>
+                                        <option>11</option>
+                                        <option>12</option>
+                                        <option>13</option>
+                                        <option>14</option>
+                                        <option>15</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <span>小被動</span>
+                                    Lv
+                                    <!--<input class="armbd armbd1" type="number" min=1 max=15>-->
+                                    <select class="armbd armbd1">
+                                        <option hidden></option>
+                                        <option>0</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                        <option>7</option>
+                                        <option>8</option>
+                                        <option>9</option>
+                                        <option>10</option>
+                                        <option>11</option>
+                                        <option>12</option>
+                                        <option>13</option>
+                                        <option>14</option>
+                                        <option>15</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <span>大被動</span>
+                                    Lv
+                                    <!--<input class="armbd armbd2" type="number" min=1 max=8>-->
+                                    <select class="armbd armbd2">
+                                        <option hidden></option>
+                                        <option>0</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                        <option>7</option>
+                                        <option>8</option>
+                                    </select>
+                                </div>
                             </td>
                         </tr>
                     </table>
@@ -665,7 +864,7 @@
         
         <div id="helpdialog" title="協助我們">
             <div>希望主公能提供以下資料以協助我們完善工具：</div>
-            <div>－ 戰器強化</div>
+            <div>戰器強化</div>
             <br>
             <div>
                 <a target="_blank"

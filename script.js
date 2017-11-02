@@ -18,18 +18,20 @@ function calcp() {
         $(this).find(".sumbing").html(sumbing);
         
         var armbdcp = 0;
-        var arm = $(this).next(".armtable").find(".arm :selected").val();
-        if($(this).find(".wujianglist").length>2 && arm !== '專屬' && arm !== '無'){
-            var i,j;
-            var armbd1 = [10,29,50,73,98,125,154,185,218,253,290,329,370,413,458];
-            var armbd2 = [30,80,170,300,470,680,930,1220];
-            $(this).next(".armtable").find(".armbd1").each(function(){
-                if(i = $(this).val()){
-                    armbdcp += armbd1[i-1];
+        if($(this).hasClass("battleself")){
+            var arm = $(this).next(".armtable").find(".arm :selected").val();
+            if($(this).find(".wujianglist :selected").val().length>2 && arm !== "專屬" && arm !== "無"){
+                var i,j;
+                var armbd1 = [10,29,50,73,98,125,154,185,218,253,290,329,370,413,458];
+                var armbd2 = [30,80,170,300,470,680,930,1220];
+                $(this).next(".armtable").find(".armbd1").each(function(){
+                    if(i = $(this).val()){
+                        armbdcp += armbd1[i-1];
+                    }
+                })
+                if(j = $(this).next(".armtable").find(".armbd2").val()){
+                    armbdcp += armbd2[j-1];
                 }
-            })
-            if(j = $(this).next(".armtable").find(".armbd2").val()){
-                armbdcp += armbd2[j-1];
             }
         }
         
@@ -340,13 +342,14 @@ $(function(){
             
             calcp();
             
-            if($(this).find(".battleself :selected").val().length>2) {
+            var $battle = $(this).find(".battleself").find(".wujianglist :selected");
+            if($battle.val().length>2) {
                 //calfol
                 function cal(sum,soullevel) {
                     return Math.floor(sum/2)+((soullevel>29)?100:(soullevel>19)?50:(soullevel>9)?30:0);
                 }
                 
-                var asso = $(this).find(".battleself :selected").attr("asso");
+                var asso = $battle.attr("asso");
                 function isasso(fol){
                     var result = false;
                     $.each(asso.split(","), function(key,value){
@@ -861,11 +864,17 @@ $(function(){
     //maxbtype
     $(".btypemax").click(function(){
         $(this).closest(".wujiangin").find(".booklevel").val(5);
+        $(this).closest(".wujiangin").find(".book").each(function(){
+            if(["無","上","左","左下","右下","右"].indexOf($(this).find(':selected').val()) > -1){
+                $(this).find("option:eq(2)").prop('selected',true);
+            }
+        })
+        /*
         $(this).closest(".wujiangin").find(".book1a").prop('selected',true);
         $(this).closest(".wujiangin").find(".book2a").prop('selected',true);
         $(this).closest(".wujiangin").find(".book3a").prop('selected',true);
         $(this).closest(".wujiangin").find(".book4a").prop('selected',true);
-        $(this).closest(".wujiangin").find(".book5a").prop('selected',true);
+        $(this).closest(".wujiangin").find(".book5a").prop('selected',true);*/
         $(this).closest(".wujiangin").find(".btypelevel3a").prop('selected',true);
         //$(this).closest(".wujiangin").find(".booklevel").prop('disabled',false);
     })

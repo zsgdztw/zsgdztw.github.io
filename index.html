@@ -73,7 +73,7 @@
             <tr>
                 <td>
                     <span>工坊戰力</span>
-                    <button id="gfmax">MAX</button>
+                    <button id="gfmax" class="max">MAX</button>
                     <div>
                         <input type="number" id="gfcp" min=0 max=10152>
                     </div>
@@ -83,7 +83,7 @@
         
         <table id="techtable">
             <tr>
-                <td><span>科技</span><button id="techmax">MAX</button></td>
+                <td><span>科技</span><button id="techmax" class="max">MAX</button></td>
                 <td>槍兵</td>
                 <td>弓兵</td>
                 <td>騎兵</td>
@@ -390,7 +390,7 @@
                                         <tr>
                                             <td>
                                                 <span>升級</span>
-                                                <button class="basemax">MAX</button>
+                                                <button class="basemax" class="max">MAX</button>
                                             </td>
                                         </tr>
                                         <tr>
@@ -402,7 +402,7 @@
                                         <tr>
                                             <td>
                                                 <span>將魂</span>
-                                                <button class="soulmax">MAX</button>
+                                                <button class="soulmax" class="max">MAX</button>
                                             </td>
                                         </tr>
                                         <tr>
@@ -419,7 +419,7 @@
                                         <tr>
                                             <td>
                                                 <span>四聖石</span>
-                                                <button class="stonemax">MAX</button>
+                                                <button class="stonemax" class="max">MAX</button>
                                             </td>
                                         </tr>
                                         <tr>
@@ -542,7 +542,7 @@
                                         <tr>
                                             <td colspan="2">
                                                 <span>兵種</span>
-                                                <button class="btypemax">MAX</button>
+                                                <button class="btypemax" class="max">MAX</button>
                                             </td>
                                         </tr>
                                         <tr>
@@ -662,7 +662,7 @@
                         <tr>
                             <td colspan="3">
                                 <span>戰器</span>
-                                <button class="armmax">MAX</button>
+                                <button class="armmax" class="max">MAX</button>
                             </td>
                         </tr>
                         <tr>
@@ -844,6 +844,7 @@
         
         <div id="headerbutton">
             <div class="fb-share-button" data-href="https://zsgdztw.github.io/" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fzsgdztw.github.io%2F&amp;src=sdkpreparse">分享</a></div>
+            <button id="infobutton">使用說明</button>
             <button id="helpbutton">協助我們</button>
             <button id="reportbutton">回報問題</button>
         </div>
@@ -864,7 +865,7 @@
         
         <div id="helpdialog" title="協助我們">
             <div>希望主公能提供以下資料以協助我們完善工具：</div>
-            <div>戰器強化</div>
+            <div>－戰器強化</div>
             <br>
             <div>
                 <a target="_blank"
@@ -874,8 +875,13 @@
             <div>感謝支持！</div>
         </div>
         
-        <div id="announce">
-            <p>由於缺少戰器強化資料，本工具並非完全準確，敬請留意</p>
+        <div id="infodialog" title="使用說明">
+            <div>這是一個戰力計算器，主公可以輸入武將數據，計算戰力</div>
+            <br>
+            <div>請留意：</div>
+            <div>－由於缺少戰器強化數據，相關部分可能導致結果不準確</div>
+            <div>－所有輸入不具驗證功能，請主公合理輸入數據</div>
+            <div>－建議使用闊屏幕裝置瀏覽</div>
         </div>
 
     </body>

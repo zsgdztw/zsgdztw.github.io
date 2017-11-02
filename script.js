@@ -1006,4 +1006,11 @@ $(function(){
         });
     })
     
+    //info dialog
+    $("#infobutton").click(function(){
+        $("#infodialog").show().dialog({
+            width: 500
+        });
+    })
+    
 })

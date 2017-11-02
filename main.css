@@ -4,12 +4,12 @@
 }
 
 .wujiangin {
-    width: 62%;
+    width: 60%;
     float: left;
 }
 
 .armtable {
-    width: 38%;
+    width: 40%;
 }
 
 #techtable {
@@ -96,12 +96,12 @@ select {
     right: 0;
 }
 
-#reportbutton, #helpbutton {
+#reportbutton, #helpbutton, #infobutton {
     background-color: silver;
     color: black;
 }
 
-#calbutton, #resetbutton, #reportbutton, #helpbutton {
+#calbutton, #resetbutton, #reportbutton, #helpbutton, #infobutton {
     border: none;
     padding: 10px 25px;
     text-align: center;
@@ -131,14 +131,7 @@ body {
     font-size: 15px;
 }
 
-#errordialog, #reportdialog, #reportsuccess, #helpdialog {
+#errordialog, #reportdialog, #reportsuccess, #helpdialog, #infodialog {
     display: none;
 }
 
-#announce {
-    position: absolute;
-    top: 0;
-    left: 30%;
-    right: 30%;
-    font-size: 15px;
-}

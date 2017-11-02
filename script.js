@@ -18,8 +18,8 @@ function calcp() {
         $(this).find(".sumbing").html(sumbing);
         
         var armbdcp = 0;
-        if($(this).find(".wujianglist").length>2 &&
-           ($(this).next(".armtable").find(".arm") !== '專屬' || $(this).next(".armtable").find(".arm") !== '無')){
+        var arm = $(this).next(".armtable").find(".arm :selected").val();
+        if($(this).find(".wujianglist").length>2 && arm !== '專屬' && arm !== '無'){
             var i,j;
             var armbd1 = [10,29,50,73,98,125,154,185,218,253,290,329,370,413,458];
             var armbd2 = [30,80,170,300,470,680,930,1220];
@@ -437,7 +437,7 @@ $(function(){
                 var armwu = armzhi = armbing = 0;
                 
                 var arm = $(this).find(".arm :selected").val();
-                if(arm!=="專屬" && arm!=="無"){
+                if(arm !== "專屬" && arm !== "無"){
                     var armtype = $(this).find(".arm :selected").attr("type");
                     var armclass = $(this).find(".armclass :selected").val();
                     var armlevel = $(this).find(".armlevel").val();
@@ -564,10 +564,25 @@ $(function(){
             //$arminputA.prop('disabled', false);
             
             //baselevel,soullevel,stone
-            $(this).closest(".wujiangself").find(".baselevel").val(1);
-            $(this).closest(".wujiangself").find(".soullevel").val(0);
-            $(this).closest(".wujiangself").find(".stonelevel").val(1);
-            $(this).closest(".wujiangself").find(".stonestar").val(0);
+            var baselevel = $(this).closest(".wujiangself").find(".baselevel");
+            var soullevel = $(this).closest(".wujiangself").find(".soullevel");
+            
+            if(!baselevel.val()){
+                baselevel.val(1);
+            }
+            if(!soullevel.val()){
+                $(this).closest(".wujiangself").find(".soullevel").val(0);
+            }
+            $(this).closest(".wujiangself").find(".stonelevel").each(function(){
+                if(!$(this).val()){
+                    $(this).val(1);
+                }
+            })
+            $(this).closest(".wujiangself").find(".stonestar").each(function(){
+                if(!$(this).val()){
+                    $(this).val(0);
+                }
+            })
             
             //btype
             var blue = "武峰", red = "三疑", yellow = "兵道", purple = "軍略", green = "金鼓", orange = "文伐";

@@ -764,7 +764,7 @@ $(function(){
                 case "遊俠甘寧":
                 case "鬥將甘寧":$arm1.html("霸海刀").attr("type","刀");
                                 $arm.append($("<option/>").html("千浪破").attr("type","弓").addClass("arm2"));break;
-                case "締盟魯肅":$arm1.html("玄武折扇").attr("type","扇");break;
+                case "締盟魯肅":$arm1.html("玄武摺扇").attr("type","扇");break;
                 case "忠魂魯肅":
                 case "鬼神呂布":
                 case "鬼神呂布":

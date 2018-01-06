@@ -270,13 +270,25 @@ $(function(){
                             $(this).find(".btypelevel3wupopup").prev("label").show();
                             $(this).find(".btypelevel3wupopup").html(extrawu);
                         }
+                        else{
+                            $(this).find(".btypelevel3wupopup").prev("label").hide();
+                            $(this).find(".btypelevel3wupopup").empty();
+                        }
                         if(extrazhi>0){
                             $(this).find(".btypelevel3zhipopup").prev("label").show();
                             $(this).find(".btypelevel3zhipopup").html(extrazhi);
                         }
+                        else{
+                            $(this).find(".btypelevel3zhipopup").prev("label").hide();
+                            $(this).find(".btypelevel3zhipopup").empty();
+                        }
                         if(extrabing>0){
                             $(this).find(".btypelevel3bingpopup").prev("label").show();
                             $(this).find(".btypelevel3bingpopup").html(extrabing);
+                        }
+                        else{
+                            $(this).find(".btypelevel3bingpopup").prev("label").hide();
+                            $(this).find(".btypelevel3bingpopup").empty();
                         }
                     }
 
